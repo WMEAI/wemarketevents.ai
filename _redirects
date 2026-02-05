@@ -1,1 +1,4 @@
+/assets/*  https://fascinating-bienenstitch-cbc5c7.netlify.app/assets/:splat  200
+/api/*  https://fascinating-bienenstitch-cbc5c7.netlify.app/api/:splat  200
 /demo/*  https://fascinating-bienenstitch-cbc5c7.netlify.app/:splat  200
+/demo  https://fascinating-bienenstitch-cbc5c7.netlify.app/  200
