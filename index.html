@@ -1330,7 +1330,7 @@
           </div>
           <!-- Carousel -->
           <div id="ep-carousel" style="position:relative;overflow:hidden;cursor:pointer;" onclick="epNext()">
-            <img id="ep-slide" src="/src/images/event-pulse-dashboard.png" alt="Event Pulse" style="width:100%;height:auto;display:block;transition:opacity 0.4s ease;" loading="eager">
+            <img id="ep-slide" src="/src/images/carousel/slide-command-center.png" alt="Event Pulse" style="width:100%;height:auto;display:block;transition:opacity 0.4s ease;" loading="eager">
           </div>
         </div>
         <!-- Dots + Label -->
@@ -1341,12 +1341,12 @@
         <script>
 (function(){
   var slides=[
-    {src:"/src/images/event-pulse-dashboard.png",label:"Command Center"},
-    {src:"/src/images/carousel/slide-simulations.png",label:"What-If Simulations"},
+    {src:"/src/images/carousel/slide-command-center.png",label:"Command Center"},
+    {src:"/src/images/carousel/slide-overview.png",label:"Overview"},
+    {src:"/src/images/carousel/slide-alerts.png",label:"Alerts"},
+    {src:"/src/images/carousel/slide-funnel-xray.png",label:"Funnel X-Ray"},
     {src:"/src/images/carousel/slide-segments.png",label:"Segments & Quality"},
-    {src:"/src/images/carousel/slide-lens-copilot.png",label:"Lens AI Copilot"},
-    {src:"/src/images/carousel/slide-alerts.png",label:"Live Alerts"},
-    {src:"/src/images/carousel/slide-lens-insights.png",label:"Lens Insights"}
+    {src:"/src/images/carousel/slide-lens-copilot.png",label:"Lens AI Copilot"}
   ];
   var idx=0,timer=null,img=document.getElementById("ep-slide"),dots=document.getElementById("ep-dots"),lbl=document.getElementById("ep-label");
   // Preload
