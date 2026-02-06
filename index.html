@@ -1319,176 +1319,62 @@
         </div>
       </div>
       <div>
-        <!-- Interactive EventPulse Tour -->
-        <div id="ep-tour" style="border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--glass-border);background:var(--bg-surface);box-shadow:0 0 80px var(--purple-glow);">
+        <!-- EventPulse Screenshot Carousel -->
+        <div style="border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--glass-border);background:var(--bg-surface);box-shadow:0 0 80px var(--purple-glow);">
           <!-- Browser Chrome -->
           <div style="padding:10px 14px;background:rgba(0,0,0,0.3);border-bottom:1px solid var(--glass-border);display:flex;align-items:center;gap:6px;">
             <div style="width:8px;height:8px;border-radius:50%;background:#FF5F57;"></div>
             <div style="width:8px;height:8px;border-radius:50%;background:#FEBC2E;"></div>
             <div style="width:8px;height:8px;border-radius:50%;background:#28C840;"></div>
-            <span style="flex:1;text-align:center;font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text-muted);">app.wemarketevents.ai</span>
+            <span style="flex:1;text-align:center;font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text-muted);">app.wemarketevents.ai — Event Pulse</span>
           </div>
-          <!-- Dashboard Area -->
-          <div style="display:flex;min-height:340px;">
-            <!-- Sidebar -->
-            <div id="ep-sidebar" style="width:130px;background:#0A0E17;border-right:1px solid var(--glass-border);padding:10px 6px;flex-shrink:0;font-size:11px;">
-              <div style="font-size:11px;font-weight:700;color:var(--text-primary);margin-bottom:6px;display:flex;align-items:center;gap:6px;">
-                <span style="width:7px;height:7px;border-radius:50%;background:var(--teal);display:inline-block;"></span>Event Pulse
-              </div>
-              <div class="ep-nav-label">Sense & Monitor</div>
-              <div class="ep-nav-item" data-step="0">◎ Command Center</div>
-              <div class="ep-nav-item" data-step="-1">◫ Overview</div>
-              <div class="ep-nav-item" data-step="1">⚡ Alerts</div>
-              <div class="ep-nav-label">Diagnose</div>
-              <div class="ep-nav-item" data-step="-1">⟐ Funnel X-Ray</div>
-              <div class="ep-nav-item" data-step="3">◬ Segments</div>
-              <div class="ep-nav-item" data-step="-1">◉ Creative Perf</div>
-              <div class="ep-nav-label">Decide</div>
-              <div class="ep-nav-item" data-step="2">△ Simulations</div>
-              <div class="ep-nav-item" data-step="-1">▤ Roadmap</div>
-              <div class="ep-nav-label">Lens</div>
-              <div class="ep-nav-item" data-step="4">✦ EventPulse Lens</div>
-            </div>
-            <!-- Content -->
-            <div id="ep-content" style="flex:1;overflow:hidden;"></div>
-          </div>
-          <!-- Annotation + Controls -->
-          <div style="border-top:1px solid var(--glass-border);padding:12px 16px;background:rgba(0,0,0,0.2);">
-            <div id="ep-annotation" style="margin-bottom:10px;"></div>
-            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px;">
-              <div id="ep-pills" style="display:flex;gap:4px;flex-wrap:wrap;"></div>
-              <button id="ep-playpause" onclick="epTogglePlay()" style="padding:4px 12px;border-radius:100px;border:1px solid var(--glass-border);background:rgba(255,255,255,0.03);color:var(--text-muted);font-size:10px;cursor:pointer;">❚❚ Pause</button>
-            </div>
-            <div style="height:2px;background:rgba(255,255,255,0.05);border-radius:1px;margin-top:8px;overflow:hidden;">
-              <div id="ep-progress" style="height:100%;width:20%;background:linear-gradient(90deg,var(--teal),var(--purple));transition:width 0.5s ease;"></div>
-            </div>
+          <!-- Carousel -->
+          <div id="ep-carousel" style="position:relative;overflow:hidden;cursor:pointer;" onclick="epNext()">
+            <img id="ep-slide" src="/src/images/event-pulse-dashboard.png" alt="Event Pulse" style="width:100%;height:auto;display:block;transition:opacity 0.4s ease;" loading="eager">
           </div>
         </div>
-      </div>
-<style>
-.ep-nav-label{font-size:7px;font-weight:700;letter-spacing:1px;color:var(--text-muted);text-transform:uppercase;margin:7px 0 2px;padding:0 8px;}
-.ep-nav-item{padding:5px 8px;border-radius:6px;color:var(--text-muted);cursor:pointer;font-weight:400;border:1px solid transparent;transition:all .2s;font-size:10px;}
-.ep-nav-item:hover{color:var(--text-secondary);}
-.ep-nav-item.active{background:rgba(0,212,170,0.1);color:var(--teal);font-weight:600;border-color:rgba(0,212,170,0.2);}
-.ep-card{background:var(--bg-elevated);border:1px solid var(--glass-border);border-radius:10px;padding:10px 12px;transition:all .3s;}
-.ep-badge{display:inline-block;font-size:8px;font-weight:700;letter-spacing:1px;text-transform:uppercase;border-radius:5px;padding:2px 7px;}
-.ep-topbar{display:flex;align-items:center;justify-content:space-between;padding:6px 12px;border-bottom:1px solid var(--glass-border);margin-bottom:8px;}
-.ep-live-dot{width:7px;height:7px;border-radius:50%;background:#22C55E;box-shadow:0 0 8px rgba(34,197,94,0.5);display:inline-block;margin-right:6px;}
-@keyframes epFadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
-.ep-fade{animation:epFadeIn .35s ease-out;}
-@media(max-width:640px){
-  #ep-sidebar{display:none!important;}
-  .ep-kpi-grid{grid-template-columns:1fr 1fr!important;}
-}
-</style>
-<script>
+        <!-- Dots + Label -->
+        <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-top:12px;">
+          <div id="ep-dots" style="display:flex;gap:6px;"></div>
+        </div>
+        <div id="ep-label" style="text-align:center;margin-top:6px;font-size:12px;font-weight:600;color:var(--teal);letter-spacing:0.5px;min-height:20px;transition:opacity 0.3s ease;"></div>
+        <script>
 (function(){
-const STEPS=[
-{id:0,sidebar:"Command Center",color:"var(--teal)",hex:"#00D4AA",title:"Real-Time Command Center",desc:"Every KPI that matters — registrations, spend, completion rate, CPA — updated live. One screen. Zero lag."},
-{id:1,sidebar:"Alerts",color:"var(--coral)",hex:"#F59E0B",title:"Shift Detection Alerts",desc:"AI monitors 24/7 for creative fatigue, traffic drops, and conversion anomalies. Catch problems before they cost you."},
-{id:2,sidebar:"Simulations",color:"var(--purple)",hex:"#635BFF",title:"What-If Simulations",desc:"Model the impact of CRO fixes and budget shifts before committing spend. See projected lift instantly."},
-{id:3,sidebar:"Segments",color:"#22C55E",hex:"#22C55E",title:"Audience Quality Guard",desc:"Track ICP drift in real time. Know exactly which segments convert and show up — not just who registers."},
-{id:4,sidebar:"Lens",color:"var(--purple)",hex:"#635BFF",title:"Lens AI Diagnostics",desc:"AI-powered insights ranked by confidence. Funnel leaks, momentum shifts, audience quality — diagnosed automatically."}
-];
-let idx=0,playing=true,hovering=false,timer=null;
-const $=s=>document.querySelector(s);
-const content=()=>$('#ep-content');
-const SCREENS=[screenCommand,screenAlerts,screenSimulations,screenSegments,screenLens];
-
-function badge(text,color){return `<span class="ep-badge" style="color:${color};border:1px solid ${color}40;background:${color}12;">${text}</span>`;}
-function card(inner,glow,extra=''){return `<div class="ep-card" style="${glow?`border-color:${glow}40;box-shadow:0 0 20px ${glow}12;`:''}${extra}">${inner}</div>`;}
-function topbar(title,badges){return `<div class="ep-topbar"><div style="display:flex;align-items:center;gap:8px;"><span class="ep-live-dot"></span><span style="font-size:8px;font-weight:700;color:#22C55E;letter-spacing:1px;">LIVE</span><span style="font-size:12px;font-weight:700;color:var(--text-primary);">${title}</span>${badges}</div><div style="display:flex;gap:3px;">${['24h','3D','7D','All'].map(t=>t==='All'?`<span style="font-size:7px;color:var(--text-primary);padding:2px 5px;border-radius:3px;background:rgba(255,107,107,0.2);border:1px solid rgba(255,107,107,0.3);">${t}</span>`:`<span style="font-size:7px;color:var(--text-muted);padding:2px 5px;border-radius:3px;border:1px solid var(--glass-border);">${t}</span>`).join('')}</div></div>`;}
-
-function screenCommand(){
-return `<div class="ep-fade" style="padding:10px;">
-${topbar('Command Center',badge('Week 11 of 12','var(--teal)')+' '+badge('Risk: LOW','#22C55E'))}
-<div class="ep-kpi-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:6px;">
-${[['TOTAL REGISTRATIONS','7,885','Show-up: 340','var(--teal)'],['TOTAL SPEND','£98,716','This week: £7,000','#F59E0B'],['COMPLETION RATE','48.7%','+2.0pp vs last week','#22C55E'],['BLENDED CPA','£13','Target: £25','var(--teal)']].map(([l,v,s,c])=>card(`<div style="font-size:7px;font-weight:700;letter-spacing:1px;color:var(--text-muted);text-transform:uppercase;margin-bottom:3px;">${l}</div><div style="font-size:18px;font-weight:800;color:var(--text-primary);">${v}</div><div style="font-size:8px;color:var(--text-muted);margin-top:2px;">${s}</div>`)).join('')}
-</div>
-${card(`<div style="display:flex;justify-content:space-between;align-items:center;"><div><div style="font-size:7px;font-weight:700;letter-spacing:1px;color:var(--coral);text-transform:uppercase;">⚠ BINDING CONSTRAINT DETECTED</div><div style="font-size:11px;font-weight:700;color:var(--text-primary);margin-top:2px;">Reg Start: 5.5% conversion rate</div><div style="font-size:8px;color:var(--text-muted);">Fixing this step first will unlock the highest lift potential</div></div><div style="display:flex;align-items:center;gap:8px;"><div style="text-align:center;"><div style="font-size:7px;color:var(--text-muted);">Expected Lift</div><div style="font-size:13px;font-weight:800;color:#22C55E;">+12-18%</div></div><div style="padding:5px 10px;border-radius:7px;background:rgba(255,107,107,0.15);border:1px solid rgba(255,107,107,0.3);font-size:8px;font-weight:600;color:var(--coral);white-space:nowrap;">▶ Simulate Fix</div></div></div>`,'var(--coral)')}
-<div style="display:flex;gap:6px;margin-top:6px;">
-${card(`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;"><span style="font-size:10px;font-weight:700;color:var(--text-primary);">📈 Registration Pace Forecast</span>${badge('95% Confidence','var(--teal)')}</div><svg width="100%" height="70" viewBox="0 0 400 70"><line x1="0" y1="28" x2="400" y2="28" stroke="#22C55E" stroke-width="1" stroke-dasharray="6 4" opacity="0.4"/><text x="390" y="25" fill="#22C55E" font-size="7" text-anchor="end">Target</text><path d="M10 62 L55 58 L100 55 L145 48 L190 40 L235 30 L280 22" fill="none" stroke="var(--teal)" stroke-width="2.5" stroke-linecap="round"/><path d="M280 22 L325 16 L370 10" fill="none" stroke="var(--purple)" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M280 22 L325 18 L370 15 L370 5 L325 10 L280 22" fill="var(--teal)" fill-opacity="0.07"/></svg>`,'','flex:2;')}
-${card(`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><div><div style="font-size:10px;font-weight:700;color:var(--text-primary);">✦ Lens Insights</div><div style="font-size:7px;color:var(--text-muted);">AI-powered diagnostics</div></div>${badge('3 New','var(--purple)')}</div>${[['Registration Funnel Leak','HIGH','var(--coral)','Completion dropped 52% → 48.7%'],['LinkedIn Momentum','HIGH','#22C55E','CPA ↓18%, conversions ↑24%'],['Audience Quality ↑','MED','#F59E0B','VP+ share 32% → 38%']].map(([t,c,co,d])=>`<div style="border-left:2px solid ${co};padding-left:7px;margin-bottom:6px;"><div style="display:flex;justify-content:space-between;"><span style="font-size:8px;font-weight:600;color:var(--text-primary);">${t}</span><span style="font-size:6px;font-weight:700;color:${co};">${c}</span></div><div style="font-size:7px;color:var(--text-muted);">${d}</div></div>`).join('')}`,'','flex:1;')}
-</div></div>`;}
-
-function screenAlerts(){
-return `<div class="ep-fade" style="padding:10px;">
-${topbar('Live Alerts',badge('SHIFTS','var(--coral)'))}
-<div style="font-size:9px;color:var(--text-muted);margin-bottom:8px;">3 active alerts requiring attention</div>
-${[['🔔','Creative Fatigue on meta_ads: CTR declining with rising frequency','Frequency is 5.42 (above 2.71 saturation point) and CTR has declined 4.8%.','#F59E0B'],['🔔','Creative Fatigue on linkedin_ads: CTR declining with rising frequency','Frequency is 4.95 (above 1.72 saturation point) and CTR has declined 3.3%.','#F59E0B'],['ℹ️','Traffic Volume Drop: sessions down 8.8%','Sessions dropped 8.8% and this correlates with creative fatigue across paid channels.','var(--teal)']].map(([i,t,d,c])=>card(`<div style="display:flex;gap:8px;align-items:flex-start;"><div style="width:24px;height:24px;border-radius:6px;background:${c}15;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;">${i}</div><div><div style="font-size:10px;font-weight:700;color:var(--text-primary);">${t}</div><div style="font-size:8px;color:var(--text-muted);margin-top:3px;line-height:1.5;">${d}</div></div></div>`,c)).join('<div style="height:6px;"></div>')}
-<div style="text-align:center;margin-top:10px;"><span style="font-size:9px;color:var(--teal);">View all alerts →</span></div>
-</div>`;}
-
-function screenSimulations(){
-return `<div class="ep-fade" style="padding:10px;">
-${topbar('Simulation',badge('SANDBOX','var(--purple)')+' '+badge('WHAT-IF','var(--teal)'))}
-<div style="display:flex;gap:6px;margin-bottom:6px;">
-${card(`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><span style="font-size:8px;font-weight:700;color:var(--text-primary);">IMPROVE COMPLETION RATE</span>${badge('CRO','#22C55E')}</div><div style="height:5px;border-radius:3px;background:var(--glass-border);position:relative;"><div style="width:35%;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--teal),#22C55E);"></div></div><div style="text-align:right;font-size:16px;font-weight:800;color:#22C55E;margin-top:4px;">+6%</div>`,'var(--teal)','flex:1;')}
-${card(`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><span style="font-size:8px;font-weight:700;color:var(--text-primary);">SHIFT RETARGETING SPEND</span>${badge('BUDGET','var(--purple)')}</div><div style="height:5px;border-radius:3px;background:var(--glass-border);position:relative;"><div style="width:55%;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--purple),var(--teal));"></div></div><div style="text-align:right;font-size:16px;font-weight:800;color:var(--purple);margin-top:4px;">15%</div>`,'var(--purple)','flex:1;')}
-</div>
-<div style="display:flex;gap:6px;">
-${card(`<div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="font-size:8px;font-weight:700;color:var(--text-primary);">📊 BASELINE (CURRENT)</span>${badge('CURRENT','#F59E0B')}</div>${[['Completion rate','48.7%'],['Registrations','545'],['Show-ups','340'],['Weekly spend','£7.0k']].map(([k,v])=>`<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--glass-border);font-size:9px;"><span style="color:var(--text-muted);">${k}</span><span style="color:var(--text-primary);font-weight:600;">${v}</span></div>`).join('')}`,'','flex:1;')}
-${card(`<div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="font-size:8px;font-weight:700;color:var(--text-primary);">✨ SCENARIO (WITH FIXES)</span>${badge('PROJECTED','#22C55E')}</div>${[['Completion rate','54.7%'],['Registrations','617'],['Show-ups','350'],['Implied lift','+13.2%']].map(([k,v])=>`<div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--glass-border);font-size:9px;"><span style="color:var(--text-muted);">${k}</span><span style="color:#22C55E;font-weight:700;">${v}</span></div>`).join('')}`,'#22C55E','flex:1;')}
-</div></div>`;}
-
-function screenSegments(){
-return `<div class="ep-fade" style="padding:10px;">
-${topbar('Segments & Quality',badge('QUALITY GUARD','#22C55E'))}
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:6px;">
-${[['VP+ EMEA','52','ICP 0.86 · Show 64%'],['DIRECTOR UK','112','ICP 0.6 · Show 64%'],['MANAGER ES','90','ICP 0.51 · Show 61%'],['SMB PROSPECT','188','ICP 0.29 · Show 57%']].map(([l,v,s])=>card(`<div style="text-align:center;"><div style="font-size:6px;font-weight:700;letter-spacing:1px;color:var(--text-muted);text-transform:uppercase;">${l}</div><div style="font-size:20px;font-weight:800;color:var(--text-primary);margin:2px 0;">${v}</div><div style="font-size:7px;color:var(--text-muted);">${s}</div></div>`)).join('')}
-</div>
-<div style="display:flex;gap:6px;margin-bottom:6px;">
-${card(`<div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="font-size:9px;font-weight:700;color:var(--text-primary);">Registrations by Segment</span>${badge('TREND','var(--teal)')}</div><svg width="100%" height="60" viewBox="0 0 300 60"><path d="M10 52 L50 50 L90 40 L130 22 L170 15 L210 18 L250 25 L290 28" fill="none" stroke="var(--teal)" stroke-width="2"/><path d="M10 54 L50 52 L90 44 L130 33 L170 26 L210 22 L250 24 L290 28" fill="none" stroke="#F59E0B" stroke-width="2"/></svg><div style="display:flex;gap:10px;"><span style="font-size:7px;color:var(--teal);">● VP+ EMEA</span><span style="font-size:7px;color:#F59E0B;">● SMB</span></div>`,'','flex:1.5;')}
-${card(`<div style="display:flex;justify-content:space-between;margin-bottom:6px;"><span style="font-size:9px;font-weight:700;color:var(--text-primary);">VP+ Quality Trend</span>${badge('ICP GUARD','var(--purple)')}</div><svg width="100%" height="60" viewBox="0 0 200 60"><path d="M10 22 L45 20 L80 22 L115 19 L150 21 L185 18" fill="none" stroke="var(--purple)" stroke-width="2"/><path d="M10 48 L45 46 L80 43 L115 41 L150 38 L185 34" fill="none" stroke="var(--teal)" stroke-width="1.5"/></svg><div style="display:flex;gap:10px;"><span style="font-size:7px;color:var(--purple);">● ICP Score</span><span style="font-size:7px;color:var(--teal);">● Show-up %</span></div>`,'','flex:1;')}
-</div>
-${card(`<div style="display:flex;justify-content:space-between;margin-bottom:4px;"><span style="font-size:9px;font-weight:700;color:var(--text-primary);">🧠 Lens Quality Insight</span>${badge('AI ANALYSIS','var(--purple)')}</div><div style="font-size:9px;font-weight:700;color:var(--coral);margin-bottom:2px;">1. ICP drift detected</div><div style="font-size:8px;color:var(--text-muted);line-height:1.4;">VP+ EMEA share declining while SMB grows. Quality is eroding.</div><div style="font-size:8px;color:var(--coral);margin-top:2px;">Action: Shift $3-5K/week back to VP+ LinkedIn segments</div>`,'var(--purple)')}
-</div>`;}
-
-function screenLens(){
-return `<div class="ep-fade" style="padding:10px;">
-${topbar('EventPulse Lens',badge('AI ENGINE','var(--purple)'))}
-<div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
-  <div style="width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,rgba(99,91,255,0.2),rgba(0,212,170,0.15));display:flex;align-items:center;justify-content:center;font-size:16px;">✦</div>
-  <div><div style="font-size:12px;font-weight:700;color:var(--text-primary);">Lens Insights</div><div style="font-size:8px;color:var(--text-muted);">AI-powered diagnostics · 3 new findings</div></div>
-</div>
-${[['⚠','Registration Funnel Leak','HIGH CONFIDENCE','var(--coral)','var(--coral)','Completion rate dropped from 52% to 48.7% (-2pp). Form abandonment increased at step 2 (company details).'],['⟐','LinkedIn Momentum Building','HIGH CONFIDENCE','#22C55E','#22C55E','LinkedIn CPA decreased 18% while conversions increased 24%. The C-suite targeting segment is outperforming.'],['⬆','Audience Quality Improving','MEDIUM CONFIDENCE','#F59E0B','var(--teal)','VP+ segment share increased from 32% to 38% this week. ICP score trending up across all channels.']].map(([ic,t,c,cc,bdr,d])=>card(`<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:4px;"><div style="display:flex;align-items:center;gap:6px;"><div style="width:20px;height:20px;border-radius:5px;background:${bdr}12;display:flex;align-items:center;justify-content:center;font-size:9px;">${ic}</div><span style="font-size:10px;font-weight:700;color:var(--text-primary);">${t}</span></div><span style="font-size:7px;font-weight:700;letter-spacing:.8px;color:${cc};">${c}</span></div><div style="font-size:8px;color:var(--text-muted);line-height:1.5;padding-left:26px;">${d}</div>`,bdr,`border-left:3px solid ${bdr};`)).join('<div style="height:6px;"></div>')}
-</div>`;}
-
-function render(){
-  content().innerHTML=SCREENS[idx]();
-  // Update sidebar
-  document.querySelectorAll('.ep-nav-item').forEach(el=>{
-    el.classList.toggle('active',parseInt(el.dataset.step)===idx);
-  });
-  // Annotation
-  const s=STEPS[idx];
-  document.getElementById('ep-annotation').innerHTML=`<div style="font-size:12px;font-weight:700;color:${s.hex};margin-bottom:3px;">${s.title}</div><div style="font-size:10px;color:var(--text-secondary);line-height:1.5;">${s.desc}</div>`;
-  // Pills
-  document.getElementById('ep-pills').innerHTML=STEPS.map((s,i)=>`<button onclick="epGoTo(${i})" style="display:flex;align-items:center;gap:4px;padding:4px 8px;border-radius:100px;cursor:pointer;border:1px solid ${i===idx?s.hex+'50':'var(--glass-border)'};background:${i===idx?s.hex+'12':'rgba(255,255,255,0.02)'};color:${i===idx?s.hex:'var(--text-muted)'};font-size:9px;font-weight:${i===idx?600:400};white-space:nowrap;"><span style="width:4px;height:4px;border-radius:50%;background:${i===idx?s.hex:'rgba(255,255,255,0.2)'};display:inline-block;"></span>${s.sidebar}</button>`).join('');
-  // Progress
-  document.getElementById('ep-progress').style.width=((idx+1)/STEPS.length*100)+'%';
-  // Play/pause btn
-  document.getElementById('ep-playpause').textContent=playing?'❚❚ Pause':'▶ Play';
-}
-
-function advance(){idx=(idx+1)%STEPS.length;render();}
-function startTimer(){clearInterval(timer);if(playing&&!hovering)timer=setInterval(advance,5000);}
-window.epGoTo=function(i){idx=i;playing=false;render();startTimer();};
-window.epTogglePlay=function(){playing=!playing;render();startTimer();};
-
-// Hover pause
-const tour=document.getElementById('ep-tour');
-tour.addEventListener('mouseenter',()=>{hovering=true;clearInterval(timer);});
-tour.addEventListener('mouseleave',()=>{hovering=false;startTimer();});
-
-// Sidebar clicks
-document.querySelectorAll('.ep-nav-item[data-step]').forEach(el=>{
-  el.addEventListener('click',()=>{const s=parseInt(el.dataset.step);if(s>=0)window.epGoTo(s);});
-});
-
-render();startTimer();
+  var slides=[
+    {src:"/src/images/event-pulse-dashboard.png",label:"Command Center"},
+    {src:"/src/images/carousel/slide-simulations.png",label:"What-If Simulations"},
+    {src:"/src/images/carousel/slide-segments.png",label:"Segments & Quality"},
+    {src:"/src/images/carousel/slide-lens-copilot.png",label:"Lens AI Copilot"},
+    {src:"/src/images/carousel/slide-alerts.png",label:"Live Alerts"},
+    {src:"/src/images/carousel/slide-lens-insights.png",label:"Lens Insights"}
+  ];
+  var idx=0,timer=null,img=document.getElementById("ep-slide"),dots=document.getElementById("ep-dots"),lbl=document.getElementById("ep-label");
+  // Preload
+  slides.forEach(function(s){var i=new Image();i.src=s.src;});
+  function render(){
+    img.style.opacity="0";
+    setTimeout(function(){
+      img.src=slides[idx].src;
+      img.alt="Event Pulse — "+slides[idx].label;
+      img.style.opacity="1";
+    },200);
+    lbl.textContent=slides[idx].label;
+    dots.innerHTML=slides.map(function(s,i){
+      return '<div style="width:'+(i===idx?'20px':'6px')+';height:6px;border-radius:3px;background:'+(i===idx?'var(--teal)':'rgba(255,255,255,0.15)')+';transition:all 0.3s ease;cursor:pointer;" onclick="epGo('+i+')"></div>';
+    }).join("");
+  }
+  function advance(){idx=(idx+1)%slides.length;render();}
+  function start(){clearInterval(timer);timer=setInterval(advance,2000);}
+  window.epNext=function(){idx=(idx+1)%slides.length;render();start();};
+  window.epGo=function(i){idx=i;render();start();};
+  render();start();
+  // Pause on hover
+  var c=document.getElementById("ep-carousel");
+  c.addEventListener("mouseenter",function(){clearInterval(timer);});
+  c.addEventListener("mouseleave",function(){start();});
 })();
-</script>
+        </script>
+      </div>
 
     <!-- LENS AI LOOP -->
     <div style="text-align:center;margin-bottom:32px;">
