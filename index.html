@@ -116,14 +116,7 @@
 
     /* ═══ GRID OVERLAY ═══ */
     .grid-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-      background-size: 60px 60px;
+      display: none;
     }
 
     /* ═══ GLASS UTILITIES ═══ */
@@ -202,7 +195,7 @@
     .section {
       position: relative;
       z-index: 1;
-      padding: 80px 24px;
+      padding: 56px 24px;
       max-width: 1200px;
       margin: 0 auto;
     }
@@ -310,8 +303,8 @@
 
     /* ═══ HERO ═══ */
     .hero {
-      padding-top: 100px;
-      padding-bottom: 40px;
+      padding-top: 72px;
+      padding-bottom: 24px;
       text-align: center;
     }
     .hero-badge {
@@ -497,7 +490,7 @@
     .ticker-wrapper::after { right: 0; background: linear-gradient(270deg, var(--bg-deep), transparent); }
     .ticker-track {
       display: flex;
-      gap: 48px;
+      gap: 32px;
       animation: ticker 30s linear infinite;
       width: max-content;
     }
@@ -709,7 +702,7 @@
     /* ═══ EVENTPULSE PRODUCT SECTION ═══ */
     .ep-section {
       position: relative;
-      padding: 80px 24px;
+      padding: 56px 24px;
     }
     .ep-section::before {
       content: '';
@@ -727,7 +720,7 @@
     .ep-hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 48px;
+      gap: 32px;
       align-items: center;
       margin-bottom: 48px;
     }
@@ -867,7 +860,7 @@
 
     /* ═══ CHALLENGER QUOTE ═══ */
     .challenger-block {
-      margin: 60px auto;
+      margin: 40px auto;
       padding: 56px 64px 48px 72px;
       position: relative;
       max-width: 900px;
@@ -1265,7 +1258,7 @@
       .steps-grid, .lens-loop { grid-template-columns: 1fr 1fr; }
       .ep-hero-grid { grid-template-columns: 1fr; gap: 40px; }
       .dashboard-body { grid-template-columns: 1fr 1fr; }
-      .section { padding: 56px 20px; }
+      .section { padding: 40px 16px; }
       .logo-strip { gap: 20px; }
       .audit-form { grid-template-columns: 1fr; }
       .micro-testimonial { flex-direction: column; text-align: center; }
@@ -1292,8 +1285,6 @@
 <!-- AMBIENT BACKGROUND -->
 <div class="ambient">
   <div class="ambient-orb teal"></div>
-  <div class="ambient-orb purple"></div>
-  <div class="ambient-orb coral"></div>
 </div>
 <div class="grid-overlay"></div>
 
@@ -1325,7 +1316,7 @@
 <section class="section hero">
   <p class="fade-in delay-1" style="font-size:14px;font-weight:600;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-bottom:20px;">EventPulse by WME.AI</p>
   <h1 class="section-title fade-in delay-1">
-    The marketing OS that shows you <span class="highlight">what's working, what's not,</span> <span style="color:var(--purple);">and what to do next.</span>
+    The marketing OS that shows you <span class="highlight">what's working, what's not,</span> <span style="color:var(--teal);text-shadow:0 0 20px rgba(0,212,170,0.5), 0 0 40px rgba(0,212,170,0.25);">and what to do next.</span>
   </h1>
   <p class="section-subtitle fade-in delay-2">
     <strong style="color:var(--text-primary);font-size:18px;">EventPulse</strong> — Sense performance shifts in real time. Diagnose what's causing them. Decide what to do next. Benchmarked against <strong style="color:var(--teal)">600+ events</strong>.
@@ -1369,7 +1360,7 @@
     </div>
 
     <!-- LENS AI LOOP -->
-    <div style="text-align:center;margin-bottom:32px;margin-top:80px;">
+    <div style="text-align:center;margin-bottom:24px;margin-top:56px;">
       <div class="section-label" style="justify-content:center;">Lens Intelligence Engine</div>
       <h3 style="font-size:28px;font-weight:700;letter-spacing:-0.5px;">The AI loop that never sleeps.</h3>
     </div>
@@ -1397,7 +1388,7 @@
     </div>
 
     <!-- FEATURES GRID -->
-    <div class="features-grid" style="margin-top:48px;">
+    <div class="features-grid" style="margin-top:32px;">
       <div class="feature-card glass">
         <div style="margin-bottom:12px;color:var(--teal);"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div>
         <div class="feature-title">Command Center</div>
