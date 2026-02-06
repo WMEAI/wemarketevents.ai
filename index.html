@@ -778,24 +778,27 @@
     }
 
     /* ═══ LENS AI LOOP ═══ */
-    /* ═══ 3D PERSPECTIVE SHOWCASE ═══ */
+    /* ═══ 3D PERSPECTIVE CAROUSEL ═══ */
     .perspective-showcase {
       width: 100%;
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 56px auto 0;
       position: relative;
-      perspective: 1800px;
+      perspective: 2000px;
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 420px;
+      height: 520px;
+      user-select: none;
     }
     .perspective-screen {
       position: absolute;
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.06);
       box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 30px rgba(0,212,170,0.04);
+      transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
     }
     .perspective-screen img {
       display: block;
@@ -809,54 +812,125 @@
       inset: 0;
       background: linear-gradient(135deg, transparent 40%, rgba(0,0,0,0.5) 100%);
       pointer-events: none;
+      transition: opacity 0.7s ease;
     }
-    .ps-back-left {
-      width: 420px;
-      height: 270px;
-      transform: rotateY(20deg) rotateX(2deg) translateX(-290px) translateZ(-100px);
-      opacity: 0.45;
+    /* Positions: left, center, right, hidden-left, hidden-right */
+    .ps-pos-left {
+      width: 480px; height: 310px;
+      transform: rotateY(22deg) rotateX(2deg) translateX(-340px) translateZ(-120px);
+      opacity: 0.4;
       z-index: 1;
     }
-    .ps-center {
-      width: 540px;
-      height: 340px;
+    .ps-pos-center {
+      width: 640px; height: 410px;
       transform: rotateY(0deg) rotateX(2deg) translateZ(0px);
       z-index: 3;
       border: 1px solid rgba(0,212,170,0.12);
-      box-shadow: 0 25px 80px rgba(0,0,0,0.7), 0 0 50px rgba(0,212,170,0.06), 0 0 100px rgba(99,91,255,0.03);
+      box-shadow: 0 30px 100px rgba(0,0,0,0.7), 0 0 60px rgba(0,212,170,0.06), 0 0 120px rgba(99,91,255,0.03);
     }
-    .ps-center::after {
-      background: linear-gradient(135deg, transparent 60%, rgba(0,0,0,0.25) 100%);
+    .ps-pos-center::after {
+      opacity: 0.3;
     }
-    .ps-back-right {
-      width: 420px;
-      height: 270px;
-      transform: rotateY(-20deg) rotateX(2deg) translateX(290px) translateZ(-100px);
-      opacity: 0.45;
+    .ps-pos-right {
+      width: 480px; height: 310px;
+      transform: rotateY(-22deg) rotateX(2deg) translateX(340px) translateZ(-120px);
+      opacity: 0.4;
       z-index: 1;
+    }
+    .ps-pos-hidden-left {
+      width: 400px; height: 260px;
+      transform: rotateY(35deg) translateX(-600px) translateZ(-250px);
+      opacity: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    .ps-pos-hidden-right {
+      width: 400px; height: 260px;
+      transform: rotateY(-35deg) translateX(600px) translateZ(-250px);
+      opacity: 0;
+      z-index: 0;
+      pointer-events: none;
     }
     .ps-reflection {
       position: absolute;
-      bottom: 0;
+      bottom: 10px;
       left: 50%;
       transform: translateX(-50%);
-      width: 400px;
-      height: 50px;
+      width: 500px;
+      height: 60px;
       background: radial-gradient(ellipse, rgba(0,212,170,0.05) 0%, transparent 70%);
       filter: blur(20px);
       z-index: 0;
     }
+    /* Navigation arrows */
+    .ps-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--teal);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+    }
+    .ps-nav:hover {
+      background: rgba(0,212,170,0.12);
+      border-color: rgba(0,212,170,0.3);
+      box-shadow: 0 0 20px rgba(0,212,170,0.15);
+    }
+    .ps-nav-left { left: 20px; }
+    .ps-nav-right { right: 20px; }
+    /* Dots */
+    .ps-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .ps-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .ps-dot.active {
+      background: var(--teal);
+      box-shadow: 0 0 8px rgba(0,212,170,0.4);
+      width: 24px;
+      border-radius: 4px;
+    }
+    /* Caption */
+    .ps-caption {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: var(--text-muted);
+      letter-spacing: 0.5px;
+      transition: opacity 0.3s ease;
+    }
+    .ps-caption strong {
+      color: var(--teal);
+      font-weight: 600;
+    }
     @media (max-width: 900px) {
-      .perspective-showcase { height: 280px; }
-      .ps-center { width: 320px; height: 200px; }
-      .ps-back-left, .ps-back-right { width: 240px; height: 155px; }
-      .ps-back-left { transform: rotateY(20deg) rotateX(2deg) translateX(-170px) translateZ(-60px); }
-      .ps-back-right { transform: rotateY(-20deg) rotateX(2deg) translateX(170px) translateZ(-60px); }
+      .perspective-showcase { height: 340px; }
+      .ps-pos-center { width: 400px; height: 260px; }
+      .ps-pos-left { width: 280px; height: 180px; transform: rotateY(22deg) rotateX(2deg) translateX(-200px) translateZ(-80px); }
+      .ps-pos-right { width: 280px; height: 180px; transform: rotateY(-22deg) rotateX(2deg) translateX(200px) translateZ(-80px); }
     }
     @media (max-width: 600px) {
-      .perspective-showcase { height: 200px; }
-      .ps-center { width: 240px; height: 150px; }
-      .ps-back-left, .ps-back-right { display: none; }
+      .perspective-showcase { height: 240px; }
+      .ps-pos-center { width: 300px; height: 190px; }
+      .ps-pos-left, .ps-pos-right { display: none; }
+      .ps-nav { display: none; }
     }
     .lens-loop {
       display: grid;
@@ -1439,20 +1513,6 @@
         </div>
     </div>
 
-    <!-- 3D PERSPECTIVE SHOWCASE -->
-    <div class="perspective-showcase fade-in">
-      <div class="perspective-screen ps-back-left">
-        <img src="/src/images/carousel/slide-funnel-xray.png" alt="Funnel X-Ray" loading="lazy">
-      </div>
-      <div class="perspective-screen ps-center">
-        <img src="/src/images/carousel/slide-command-center.png" alt="Command Center" loading="lazy">
-      </div>
-      <div class="perspective-screen ps-back-right">
-        <img src="/src/images/carousel/slide-alerts.png" alt="Alerts" loading="lazy">
-      </div>
-      <div class="ps-reflection"></div>
-    </div>
-
     <!-- LENS AI LOOP -->
     <div style="text-align:center;margin-bottom:24px;margin-top:56px;">
       <div class="section-label" style="justify-content:center;">Lens Intelligence Engine</div>
@@ -1514,6 +1574,41 @@
         <div class="feature-desc">Every metric measured against 600+ events. Know if your 3.2% conversion rate is good, bad, or catastrophic — for your event type.</div>
       </div>
     </div>
+
+    <!-- 3D PERSPECTIVE CAROUSEL -->
+    <div style="text-align:center;margin-top:48px;margin-bottom:8px;">
+      <div class="section-label" style="justify-content:center;">Inside the Platform</div>
+      <h3 style="font-size:28px;font-weight:700;letter-spacing:-0.5px;">See what your team sees every day.</h3>
+    </div>
+    <div class="perspective-showcase fade-in" id="ps-carousel">
+      <div class="ps-nav ps-nav-left" onclick="psRotate(-1)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      </div>
+      <div class="perspective-screen" data-ps-index="0">
+        <img src="/src/images/carousel/slide-command-center.png" alt="Command Center" loading="lazy">
+      </div>
+      <div class="perspective-screen" data-ps-index="1">
+        <img src="/src/images/carousel/slide-overview.png" alt="Overview" loading="lazy">
+      </div>
+      <div class="perspective-screen" data-ps-index="2">
+        <img src="/src/images/carousel/slide-funnel-xray.png" alt="Funnel X-Ray" loading="lazy">
+      </div>
+      <div class="perspective-screen" data-ps-index="3">
+        <img src="/src/images/carousel/slide-alerts.png" alt="Alerts" loading="lazy">
+      </div>
+      <div class="perspective-screen" data-ps-index="4">
+        <img src="/src/images/carousel/slide-segments.png" alt="Segments & Quality" loading="lazy">
+      </div>
+      <div class="perspective-screen" data-ps-index="5">
+        <img src="/src/images/carousel/slide-lens-copilot.png" alt="Lens AI Copilot" loading="lazy">
+      </div>
+      <div class="ps-nav ps-nav-right" onclick="psRotate(1)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </div>
+      <div class="ps-reflection"></div>
+    </div>
+    <div class="ps-dots" id="ps-dots"></div>
+    <div class="ps-caption" id="ps-caption"><strong>Command Center</strong> — Real-time KPIs at a glance</div>
 
     <!-- CHALLENGER BLOCK -->
     <div class="challenger-block glass">
@@ -1923,6 +2018,95 @@ if (auditForm) {
     btn.style.opacity = '0.7';
   });
 }
+
+// ═══ 3D PERSPECTIVE CAROUSEL ═══
+const psSlides = document.querySelectorAll('#ps-carousel .perspective-screen');
+const psCaptions = [
+  { title: 'Command Center', desc: 'Real-time KPIs at a glance' },
+  { title: 'Overview', desc: 'Full campaign performance snapshot' },
+  { title: 'Funnel X-Ray', desc: 'See where registrations drop off' },
+  { title: 'Alerts', desc: 'Anomalies detected before they cost you' },
+  { title: 'Segments & Quality', desc: 'Lead scoring and audience intelligence' },
+  { title: 'Lens AI Copilot', desc: 'Ask questions, get evidence-backed answers' }
+];
+let psActive = 0;
+const psTotal = psSlides.length;
+
+// Build dots
+const dotsContainer = document.getElementById('ps-dots');
+for (let i = 0; i < psTotal; i++) {
+  const dot = document.createElement('div');
+  dot.className = 'ps-dot' + (i === 0 ? ' active' : '');
+  dot.onclick = () => psGoTo(i);
+  dotsContainer.appendChild(dot);
+}
+
+function psPositions(active) {
+  const positions = [];
+  for (let i = 0; i < psTotal; i++) {
+    const diff = ((i - active) % psTotal + psTotal) % psTotal;
+    if (diff === 0) positions.push('ps-pos-center');
+    else if (diff === 1) positions.push('ps-pos-right');
+    else if (diff === psTotal - 1) positions.push('ps-pos-left');
+    else if (diff <= Math.floor(psTotal / 2)) positions.push('ps-pos-hidden-right');
+    else positions.push('ps-pos-hidden-left');
+  }
+  return positions;
+}
+
+function psUpdate() {
+  const pos = psPositions(psActive);
+  psSlides.forEach((s, i) => {
+    s.className = 'perspective-screen ' + pos[i];
+  });
+  // Update dots
+  document.querySelectorAll('.ps-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === psActive);
+  });
+  // Update caption
+  const cap = document.getElementById('ps-caption');
+  cap.style.opacity = '0';
+  setTimeout(() => {
+    cap.innerHTML = '<strong>' + psCaptions[psActive].title + '</strong> — ' + psCaptions[psActive].desc;
+    cap.style.opacity = '1';
+  }, 200);
+}
+
+function psRotate(dir) {
+  psActive = ((psActive + dir) % psTotal + psTotal) % psTotal;
+  psUpdate();
+}
+
+function psGoTo(index) {
+  psActive = index;
+  psUpdate();
+}
+
+// Click side panels to navigate
+psSlides.forEach(s => {
+  s.addEventListener('click', () => {
+    const idx = parseInt(s.dataset.psIndex);
+    if (idx !== psActive) psGoTo(idx);
+  });
+});
+
+// Auto-rotate every 5s
+let psAutoTimer = setInterval(() => psRotate(1), 5000);
+document.getElementById('ps-carousel').addEventListener('mouseenter', () => clearInterval(psAutoTimer));
+document.getElementById('ps-carousel').addEventListener('mouseleave', () => {
+  psAutoTimer = setInterval(() => psRotate(1), 5000);
+});
+
+// Touch swipe support
+let psTouchX = 0;
+document.getElementById('ps-carousel').addEventListener('touchstart', e => { psTouchX = e.touches[0].clientX; });
+document.getElementById('ps-carousel').addEventListener('touchend', e => {
+  const diff = e.changedTouches[0].clientX - psTouchX;
+  if (Math.abs(diff) > 50) psRotate(diff < 0 ? 1 : -1);
+});
+
+// Initialize
+psUpdate();
 </script>
 
 </body>
