@@ -778,6 +778,86 @@
     }
 
     /* ═══ LENS AI LOOP ═══ */
+    /* ═══ 3D PERSPECTIVE SHOWCASE ═══ */
+    .perspective-showcase {
+      width: 100%;
+      max-width: 1100px;
+      margin: 56px auto 0;
+      position: relative;
+      perspective: 1800px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 420px;
+    }
+    .perspective-screen {
+      position: absolute;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 30px rgba(0,212,170,0.04);
+    }
+    .perspective-screen img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .perspective-screen::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(0,0,0,0.5) 100%);
+      pointer-events: none;
+    }
+    .ps-back-left {
+      width: 420px;
+      height: 270px;
+      transform: rotateY(20deg) rotateX(2deg) translateX(-290px) translateZ(-100px);
+      opacity: 0.45;
+      z-index: 1;
+    }
+    .ps-center {
+      width: 540px;
+      height: 340px;
+      transform: rotateY(0deg) rotateX(2deg) translateZ(0px);
+      z-index: 3;
+      border: 1px solid rgba(0,212,170,0.12);
+      box-shadow: 0 25px 80px rgba(0,0,0,0.7), 0 0 50px rgba(0,212,170,0.06), 0 0 100px rgba(99,91,255,0.03);
+    }
+    .ps-center::after {
+      background: linear-gradient(135deg, transparent 60%, rgba(0,0,0,0.25) 100%);
+    }
+    .ps-back-right {
+      width: 420px;
+      height: 270px;
+      transform: rotateY(-20deg) rotateX(2deg) translateX(290px) translateZ(-100px);
+      opacity: 0.45;
+      z-index: 1;
+    }
+    .ps-reflection {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 50px;
+      background: radial-gradient(ellipse, rgba(0,212,170,0.05) 0%, transparent 70%);
+      filter: blur(20px);
+      z-index: 0;
+    }
+    @media (max-width: 900px) {
+      .perspective-showcase { height: 280px; }
+      .ps-center { width: 320px; height: 200px; }
+      .ps-back-left, .ps-back-right { width: 240px; height: 155px; }
+      .ps-back-left { transform: rotateY(20deg) rotateX(2deg) translateX(-170px) translateZ(-60px); }
+      .ps-back-right { transform: rotateY(-20deg) rotateX(2deg) translateX(170px) translateZ(-60px); }
+    }
+    @media (max-width: 600px) {
+      .perspective-showcase { height: 200px; }
+      .ps-center { width: 240px; height: 150px; }
+      .ps-back-left, .ps-back-right { display: none; }
+    }
     .lens-loop {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -1357,6 +1437,20 @@
             <source src="/src/videos/eventpulse-demo.mp4" type="video/mp4">
           </video>
         </div>
+    </div>
+
+    <!-- 3D PERSPECTIVE SHOWCASE -->
+    <div class="perspective-showcase fade-in">
+      <div class="perspective-screen ps-back-left">
+        <img src="/src/images/carousel/slide-funnel-xray.png" alt="Funnel X-Ray" loading="lazy">
+      </div>
+      <div class="perspective-screen ps-center">
+        <img src="/src/images/carousel/slide-command-center.png" alt="Command Center" loading="lazy">
+      </div>
+      <div class="perspective-screen ps-back-right">
+        <img src="/src/images/carousel/slide-alerts.png" alt="Alerts" loading="lazy">
+      </div>
+      <div class="ps-reflection"></div>
     </div>
 
     <!-- LENS AI LOOP -->
