@@ -867,32 +867,54 @@
 
     /* ═══ CHALLENGER QUOTE ═══ */
     .challenger-block {
-      margin: 40px 0;
-      padding: 40px;
+      margin: 60px 0;
+      padding: 48px 48px 48px 56px;
       position: relative;
-      border-left: 3px solid var(--coral);
+      border-left: none;
+      border: 1px solid rgba(255,107,107,0.2);
+      background: linear-gradient(135deg, rgba(255,107,107,0.06) 0%, rgba(99,91,255,0.04) 100%);
+      box-shadow: 0 0 40px rgba(255,107,107,0.08), 0 0 80px rgba(99,91,255,0.04);
     }
     .challenger-block::before {
-      content: '"';
+      content: '';
       position: absolute;
-      top: 20px; left: 24px;
-      font-size: 80px;
+      top: 0; left: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, var(--coral), var(--purple));
+      border-radius: 4px 0 0 4px;
+    }
+    .challenger-block::after {
+      content: '\201C';
+      position: absolute;
+      top: 24px; left: 32px;
+      font-size: 96px;
       font-weight: 900;
-      color: rgba(255,107,107,0.1);
+      color: rgba(255,107,107,0.15);
       line-height: 1;
+      font-family: Georgia, serif;
     }
     .challenger-text {
-      font-size: 18px;
+      font-size: 20px;
       font-style: italic;
-      color: var(--text-secondary);
-      line-height: 1.7;
-      max-width: 700px;
+      color: var(--text-primary);
+      line-height: 1.8;
+      max-width: 800px;
+      padding-left: 24px;
+      font-weight: 400;
+    }
+    .challenger-text strong {
+      color: var(--coral);
+      font-weight: 600;
+      font-style: italic;
     }
     .challenger-attr {
-      margin-top: 16px;
-      font-size: 13px;
-      color: var(--text-muted);
+      margin-top: 20px;
+      padding-left: 24px;
+      font-size: 14px;
+      color: var(--teal);
       font-style: normal;
+      font-weight: 600;
+      letter-spacing: 0.5px;
     }
 
     /* ═══ CTA SECTION ═══ */
@@ -1411,7 +1433,7 @@
     <!-- CHALLENGER BLOCK -->
     <div class="challenger-block glass">
       <div class="challenger-text">
-        You're spending on LinkedIn, maybe Google, maybe some programmatic or email — and you're checking reports every couple of weeks when you get a moment. By the time you see something's off, most of the budget's already been spent. So you default to what you did last year, because changing course mid-campaign without clear evidence feels risky.
+        You're spending on LinkedIn, maybe Google, maybe some programmatic or email — and you're <strong>checking reports every couple of weeks</strong> when you get a moment. By the time you see something's off, <strong>most of the budget's already been spent.</strong> So you default to what you did last year, because <strong>changing course mid-campaign without clear evidence feels risky.</strong>
       </div>
       <div class="challenger-attr">— Every mid-market event organiser we've spoken to in the last 12 months</div>
     </div>
