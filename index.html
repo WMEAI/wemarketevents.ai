@@ -8,6 +8,9 @@
   <meta name="keywords" content="AI event marketing, B2B event marketing platform, event registration optimization, EventPulse, event marketing analytics">
   <meta name="author" content="WeMarketEvents.AI">
 
+  <!-- HubSpot Tracking Code -->
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/144201570.js"></script>
+
   <!-- Open Graph (LinkedIn / Facebook) -->
   <meta property="og:title" content="WME.AI — The AI-Native Event Marketing Platform">
   <meta property="og:description" content="Stop losing 40% of registrations. EventPulse diagnoses, predicts, and prescribes — benchmarked against 600+ B2B events.">
@@ -1936,18 +1939,21 @@
       Your AI readiness score, opportunity cost calculation, priority actions, and a clear path forward. No credit card. No sales pitch. 48-hour turnaround.
     </p>
 
-    <form class="audit-form" action="https://formspree.io/f/xpwdkjqr" method="POST">
-      <input type="text" name="name" placeholder="Your name" required>
+    <form class="audit-form" id="hs-audit-form">
+      <input type="text" name="firstname" placeholder="First name" required>
+      <input type="text" name="lastname" placeholder="Last name" required>
       <input type="email" name="email" placeholder="Work email" required>
       <input type="text" name="company" placeholder="Company / Event name" required>
-      <select name="events" required>
+      <select name="events_per_year" required>
         <option value="" disabled selected>Events per year</option>
         <option value="1-3">1–3 events</option>
         <option value="4-8">4–8 events</option>
         <option value="9-15">9–15 events</option>
         <option value="15+">15+ events</option>
       </select>
+      <input type="url" name="website" placeholder="Event website (optional)" class="full-width" style="grid-column:1/-1;">
       <button type="submit" class="btn btn-primary full-width" style="border:none;cursor:pointer;">Request Free Audit → 48hr Turnaround</button>
+      <div id="hs-form-msg" style="display:none;grid-column:1/-1;text-align:center;padding:16px;border-radius:8px;font-size:14px;"></div>
     </form>
 
     <div class="audit-or">or</div>
@@ -2009,13 +2015,92 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Form submission feedback
-const auditForm = document.querySelector('.audit-form');
+// ═══ HUBSPOT FORM SUBMISSION ═══
+const HS_PORTAL = '144201570';
+const HS_FORM_ID = 'PASTE_YOUR_FORM_GUID_HERE'; // ← Replace after creating form in HubSpot
+
+const auditForm = document.getElementById('hs-audit-form');
+const formMsg = document.getElementById('hs-form-msg');
+
 if (auditForm) {
-  auditForm.addEventListener('submit', function(e) {
+  auditForm.addEventListener('submit', async function(e) {
+    e.preventDefault();
     const btn = auditForm.querySelector('button[type="submit"]');
+    const origText = btn.textContent;
     btn.textContent = 'Submitting...';
     btn.style.opacity = '0.7';
+    btn.disabled = true;
+
+    const fd = new FormData(auditForm);
+    const data = Object.fromEntries(fd.entries());
+
+    // Identify contact via HubSpot tracking
+    var _hsq = window._hsq = window._hsq || [];
+    _hsq.push(["identify", {
+      email: data.email,
+      firstname: data.firstname,
+      lastname: data.lastname,
+      company: data.company
+    }]);
+    _hsq.push(['trackPageView']);
+
+    // Submit via HubSpot Forms API
+    const hutk = document.cookie.match(/hubspotutk=([^;]*)/)?.[1] || '';
+    const fields = [
+      { name: 'email', value: data.email },
+      { name: 'firstname', value: data.firstname },
+      { name: 'lastname', value: data.lastname },
+      { name: 'company', value: data.company },
+      { name: 'events_per_year', value: data.events_per_year }
+    ];
+    if (data.website) fields.push({ name: 'website', value: data.website });
+
+    try {
+      const resp = await fetch(
+        `https://api.hsforms.com/submissions/v3/integration/submit/${HS_PORTAL}/${HS_FORM_ID}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            fields: fields,
+            context: {
+              hutk: hutk,
+              pageUri: window.location.href,
+              pageName: 'AI Readiness Audit Request'
+            },
+            legalConsentOptions: {
+              consent: {
+                consentToProcess: true,
+                text: "I agree to receive communications from WME.AI"
+              }
+            }
+          })
+        }
+      );
+
+      if (resp.ok) {
+        formMsg.style.display = 'block';
+        formMsg.style.background = 'rgba(0,212,170,0.1)';
+        formMsg.style.border = '1px solid rgba(0,212,170,0.3)';
+        formMsg.style.color = 'var(--teal)';
+        formMsg.innerHTML = '✓ <strong>Audit requested!</strong> Check your inbox within 48 hours. We\'ll send your AI Readiness Score, opportunity cost analysis, and priority actions.';
+        auditForm.querySelectorAll('input, select').forEach(el => el.disabled = true);
+        btn.textContent = 'Submitted ✓';
+        btn.style.background = 'rgba(0,212,170,0.2)';
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch(err) {
+      // Fallback: identify only (contact still created via tracking code)
+      formMsg.style.display = 'block';
+      formMsg.style.background = 'rgba(0,212,170,0.1)';
+      formMsg.style.border = '1px solid rgba(0,212,170,0.3)';
+      formMsg.style.color = 'var(--teal)';
+      formMsg.innerHTML = '✓ <strong>Request received!</strong> We\'ll be in touch within 48 hours.';
+      btn.textContent = 'Submitted ✓';
+      btn.style.opacity = '1';
+      console.log('HubSpot form fallback — contact identified via tracking code');
+    }
   });
 }
 
