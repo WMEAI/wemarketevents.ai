@@ -1317,7 +1317,7 @@
         </div>
     </div>
     <!-- Full-Width Carousel -->
-    <div style="max-width:1400px;margin:0 auto;">
+    <div style="max-width:1260px;margin:0 auto;">
         <!-- EventPulse Screenshot Carousel -->
         <div style="border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--glass-border);background:var(--bg-surface);box-shadow:0 0 80px var(--purple-glow);">
           <!-- Browser Chrome -->
@@ -1329,7 +1329,8 @@
           </div>
           <!-- Carousel -->
           <div id="ep-carousel" style="position:relative;overflow:hidden;cursor:pointer;" onclick="epNext()">
-            <img id="ep-slide" src="/src/images/carousel/slide-command-center.png" alt="Event Pulse" style="width:100%;height:auto;display:block;transition:opacity 0.4s ease;" loading="eager">
+            <img id="ep-slide-a" src="/src/images/carousel/slide-command-center.png" alt="Event Pulse" style="width:100%;height:auto;display:block;" loading="eager">
+            <img id="ep-slide-b" src="/src/images/carousel/slide-command-center.png" alt="Event Pulse" style="width:100%;height:auto;display:block;position:absolute;top:0;left:0;opacity:0;transition:opacity 0.6s ease;" loading="eager">
           </div>
         </div>
         <!-- Dots + Label -->
@@ -1348,27 +1349,27 @@
     {src:"/src/images/carousel/slide-segments.png",label:"Segments & Quality"},
     {src:"/src/images/carousel/slide-lens-copilot.png",label:"Lens AI Copilot"}
   ];
-  var idx=0,timer=null,img=document.getElementById("ep-slide"),dots=document.getElementById("ep-dots"),lbl=document.getElementById("ep-label");
-  // Preload
+  var idx=0,timer=null,a=document.getElementById("ep-slide-a"),b=document.getElementById("ep-slide-b"),dots=document.getElementById("ep-dots"),lbl=document.getElementById("ep-label"),front=true;
   slides.forEach(function(s){var i=new Image();i.src=s.src;});
   function render(){
-    img.style.opacity="0";
-    setTimeout(function(){
-      img.src=slides[idx].src;
-      img.alt="Event Pulse — "+slides[idx].label;
-      img.style.opacity="1";
-    },200);
-    lbl.textContent=slides[idx].label;
+    var next=slides[idx],show=front?b:a,hide=front?a:b;
+    show.src=next.src;show.alt="Event Pulse — "+next.label;
+    show.style.opacity="1";hide.style.opacity="0";
+    front=!front;
+    lbl.textContent=next.label;
     dots.innerHTML=slides.map(function(s,i){
       return '<div style="width:'+(i===idx?'20px':'6px')+';height:6px;border-radius:3px;background:'+(i===idx?'var(--teal)':'rgba(255,255,255,0.15)')+';transition:all 0.3s ease;cursor:pointer;" onclick="epGo('+i+')"></div>';
     }).join("");
   }
   function advance(){idx=(idx+1)%slides.length;render();}
-  function start(){clearInterval(timer);timer=setInterval(advance,2000);}
+  function start(){clearInterval(timer);timer=setInterval(advance,3000);}
   window.epNext=function(){idx=(idx+1)%slides.length;render();start();};
   window.epGo=function(i){idx=i;render();start();};
-  render();start();
-  // Pause on hover
+  lbl.textContent=slides[0].label;
+  dots.innerHTML=slides.map(function(s,i){
+    return '<div style="width:'+(i===0?'20px':'6px')+';height:6px;border-radius:3px;background:'+(i===0?'var(--teal)':'rgba(255,255,255,0.15)')+';transition:all 0.3s ease;cursor:pointer;" onclick="epGo('+i+')"></div>';
+  }).join("");
+  start();
   var c=document.getElementById("ep-carousel");
   c.addEventListener("mouseenter",function(){clearInterval(timer);});
   c.addEventListener("mouseleave",function(){start();});
