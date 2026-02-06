@@ -97,13 +97,13 @@
     }
     .ambient-orb.purple {
       width: 500px; height: 500px;
-      background: radial-gradient(circle, var(--purple) 0%, transparent 70%);
+      background: radial-gradient(circle, var(--teal) 0%, transparent 70%);
       bottom: -150px; left: -100px;
       animation-delay: -7s;
     }
     .ambient-orb.coral {
       width: 300px; height: 300px;
-      background: radial-gradient(circle, var(--coral) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(0,212,170,0.5) 0%, transparent 70%);
       top: 50%; left: 50%;
       opacity: 0.12;
       animation-delay: -14s;
@@ -221,7 +221,7 @@
       content: '';
       width: 3px;
       height: 16px;
-      background: var(--coral);
+      background: var(--teal);
       border-radius: 2px;
     }
     .section-title {
@@ -232,7 +232,7 @@
       margin-bottom: 20px;
     }
     .section-title .highlight {
-      background: linear-gradient(135deg, var(--teal), var(--purple));
+      background: var(--teal);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -300,11 +300,11 @@
       50% { background-position: 100% 50%; box-shadow: 0 0 70px rgba(0,212,170,0.6), 0 0 140px rgba(0,212,170,0.25), 0 8px 32px rgba(0,0,0,0.3); }
     }
     .btn-purple {
-      background: var(--purple);
+      background: var(--teal);
       color: white;
     }
     .btn-purple:hover {
-      box-shadow: 0 0 32px var(--purple-glow), 0 8px 24px rgba(0,0,0,0.3);
+      box-shadow: 0 0 32px var(--teal-glow), 0 8px 24px rgba(0,0,0,0.3);
       transform: translateY(-1px);
     }
 
@@ -517,8 +517,8 @@
       letter-spacing: -0.5px;
     }
     .ticker-value.teal { color: var(--teal); }
-    .ticker-value.purple { color: var(--purple); }
-    .ticker-value.coral { color: var(--coral); }
+    .ticker-value.purple { color: var(--teal); }
+    .ticker-value.coral { color: var(--teal); }
     .ticker-label {
       font-size: 13px;
       color: var(--text-muted);
@@ -544,7 +544,7 @@
     .problem-stat {
       font-size: 40px;
       font-weight: 800;
-      color: var(--coral);
+      color: var(--teal);
       letter-spacing: -1px;
       margin-bottom: 8px;
     }
@@ -581,9 +581,9 @@
       height: 2px;
     }
     .step-card:nth-child(1)::before { background: var(--teal); }
-    .step-card:nth-child(2)::before { background: var(--purple); }
-    .step-card:nth-child(3)::before { background: var(--coral); }
-    .step-card:nth-child(4)::before { background: var(--amber); }
+    .step-card:nth-child(2)::before { background: var(--teal); }
+    .step-card:nth-child(3)::before { background: var(--teal); }
+    .step-card:nth-child(4)::before { background: var(--teal); }
     .step-number {
       font-size: 48px;
       font-weight: 900;
@@ -592,9 +592,9 @@
       opacity: 0.15;
     }
     .step-card:nth-child(1) .step-number { color: var(--teal); }
-    .step-card:nth-child(2) .step-number { color: var(--purple); }
-    .step-card:nth-child(3) .step-number { color: var(--coral); }
-    .step-card:nth-child(4) .step-number { color: var(--amber); }
+    .step-card:nth-child(2) .step-number { color: var(--teal); }
+    .step-card:nth-child(3) .step-number { color: var(--teal); }
+    .step-card:nth-child(4) .step-number { color: var(--teal); }
     .step-title {
       font-size: 18px;
       font-weight: 700;
@@ -631,9 +631,9 @@
       margin-bottom: 16px;
     }
     .value-icon.teal { background: var(--teal-glow); color: var(--teal); }
-    .value-icon.purple { background: var(--purple-glow); color: var(--purple); }
-    .value-icon.coral { background: var(--coral-glow); color: var(--coral); }
-    .value-icon.amber { background: rgba(245,158,11,0.12); color: var(--amber); }
+    .value-icon.purple { background: var(--teal-glow); color: var(--teal); }
+    .value-icon.coral { background: var(--teal-glow); color: var(--teal); }
+    .value-icon.amber { background: var(--teal-glow); color: var(--teal); }
     .value-title {
       font-size: 18px;
       font-weight: 700;
@@ -703,8 +703,8 @@
       letter-spacing: 0.5px;
     }
     .case-card:nth-child(1) .case-metric-value { color: var(--teal); }
-    .case-card:nth-child(2) .case-metric-value { color: var(--purple); }
-    .case-card:nth-child(3) .case-metric-value { color: var(--coral); }
+    .case-card:nth-child(2) .case-metric-value { color: var(--teal); }
+    .case-card:nth-child(3) .case-metric-value { color: var(--teal); }
 
     /* ═══ EVENTPULSE PRODUCT SECTION ═══ */
     .ep-section {
@@ -737,11 +737,11 @@
       gap: 8px;
       padding: 6px 16px;
       border-radius: 100px;
-      background: var(--purple-glow);
-      border: 1px solid rgba(99,91,255,0.2);
+      background: var(--teal-glow);
+      border: 1px solid rgba(0,212,170,0.2);
       font-size: 12px;
       font-weight: 600;
-      color: var(--purple);
+      color: var(--teal);
       letter-spacing: 0.5px;
       margin-bottom: 20px;
     }
@@ -808,9 +808,9 @@
       height: 2px;
     }
     .lens-step:nth-child(1)::before { background: var(--teal); }
-    .lens-step:nth-child(2)::before { background: var(--purple); }
-    .lens-step:nth-child(3)::before { background: var(--coral); }
-    .lens-step:nth-child(4)::before { background: var(--amber); }
+    .lens-step:nth-child(2)::before { background: rgba(0,212,170,0.7); }
+    .lens-step:nth-child(3)::before { background: rgba(0,212,170,0.5); }
+    .lens-step:nth-child(4)::before { background: rgba(0,212,170,0.3); }
     .lens-icon {
       font-size: 28px;
       margin-bottom: 16px;
@@ -826,9 +826,9 @@
       margin-right: auto;
     }
     .lens-step:nth-child(1) .lens-icon { box-shadow: 0 0 20px rgba(0,212,170,0.15); }
-    .lens-step:nth-child(2) .lens-icon { box-shadow: 0 0 20px rgba(99,91,255,0.15); }
-    .lens-step:nth-child(3) .lens-icon { box-shadow: 0 0 20px rgba(255,107,107,0.15); }
-    .lens-step:nth-child(4) .lens-icon { box-shadow: 0 0 20px rgba(245,158,11,0.15); }
+    .lens-step:nth-child(2) .lens-icon { box-shadow: 0 0 20px rgba(0,212,170,0.15); }
+    .lens-step:nth-child(3) .lens-icon { box-shadow: 0 0 20px rgba(0,212,170,0.15); }
+    .lens-step:nth-child(4) .lens-icon { box-shadow: 0 0 20px rgba(0,212,170,0.15); }
     .lens-step-title {
       font-size: 16px;
       font-weight: 700;
@@ -871,16 +871,16 @@
       padding: 56px 64px 48px 72px;
       position: relative;
       max-width: 900px;
-      border: 1px solid rgba(255,107,107,0.2);
-      background: linear-gradient(135deg, rgba(255,107,107,0.06) 0%, rgba(99,91,255,0.04) 100%);
-      box-shadow: 0 0 40px rgba(255,107,107,0.08), 0 0 80px rgba(99,91,255,0.04);
+      border: 1px solid rgba(0,212,170,0.15);
+      background: rgba(0,212,170,0.03);
+      box-shadow: 0 0 40px rgba(0,212,170,0.06);
     }
     .challenger-block::before {
       content: '';
       position: absolute;
       top: 0; left: 0; bottom: 0;
       width: 4px;
-      background: linear-gradient(to bottom, var(--coral), var(--purple));
+      background: var(--teal);
       border-radius: 4px 0 0 4px;
     }
     .challenger-block::after {
@@ -889,7 +889,7 @@
       top: 28px; left: 40px;
       font-size: 96px;
       font-weight: 900;
-      color: rgba(255,107,107,0.15);
+      color: rgba(0,212,170,0.12);
       line-height: 1;
       font-family: Georgia, serif;
     }
@@ -902,7 +902,7 @@
       font-weight: 400;
     }
     .challenger-text strong {
-      color: var(--coral);
+      color: var(--text-primary);
       font-weight: 600;
       font-style: italic;
     }
@@ -934,7 +934,7 @@
       inset: -1px;
       border-radius: inherit;
       padding: 1px;
-      background: linear-gradient(135deg, var(--teal), var(--purple), var(--coral));
+      background: linear-gradient(135deg, var(--teal), rgba(0,212,170,0.4));
       -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
       -webkit-mask-composite: xor;
       mask-composite: exclude;
@@ -1101,7 +1101,7 @@
     .micro-testimonial-avatar {
       width: 44px; height: 44px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--teal), var(--purple));
+      background: var(--teal);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1157,13 +1157,13 @@
       margin-top: 32px;
       padding: 24px;
       border-radius: var(--radius-md);
-      background: rgba(255,107,107,0.04);
-      border: 1px solid rgba(255,107,107,0.1);
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
     }
     .icp-not-title {
       font-size: 14px;
       font-weight: 600;
-      color: var(--coral);
+      color: var(--text-secondary);
       margin-bottom: 8px;
     }
     .icp-not-list {
@@ -1324,10 +1324,10 @@
 <!-- ═══ HERO ═══ -->
 <section class="section hero">
   <h1 class="section-title fade-in delay-1">
-    The marketing OS that shows you <span class="highlight">what's working, what's not,</span> <span style="color:var(--coral)">and what to do next.</span>
+    The marketing OS that shows you <span class="highlight">what's working, what's not,</span> <span class="highlight">and what to do next.</span>
   </h1>
   <p class="section-subtitle fade-in delay-2">
-    <strong style="color:var(--text-primary);font-size:18px;">EventPulse</strong> — <span style="color:var(--teal)">Sense</span> performance shifts in real time. <span style="color:var(--purple)">Diagnose</span> what's causing them. <span style="color:var(--coral)">Decide</span> what to do next. Benchmarked against <strong style="color:var(--teal)">600+ events</strong>.
+    <strong style="color:var(--text-primary);font-size:18px;">EventPulse</strong> — Sense performance shifts in real time. Diagnose what's causing them. Decide what to do next. Benchmarked against <strong style="color:var(--teal)">600+ events</strong>.
   </p>
   <div class="hero-actions fade-in delay-3">
     <a href="https://demo.wemarketevents.ai" target="_blank" class="btn btn-hero">Experience the Platform →</a>
@@ -1353,7 +1353,7 @@
     </div>
     <!-- EventPulse Demo Video -->
     <div style="max-width:1080px;margin:0 auto;">
-        <div style="border-radius:var(--radius-lg);overflow:hidden;border:1.5px solid rgba(0,212,170,0.5);background:var(--bg-surface);box-shadow:0 0 10px rgba(0,212,170,0.3), 0 0 30px rgba(0,212,170,0.2), 0 0 80px rgba(0,212,170,0.15), 0 0 160px rgba(0,212,170,0.08);">
+        <div style="border-radius:var(--radius-lg);overflow:hidden;border:1px solid rgba(0,212,170,0.25);background:var(--bg-surface);box-shadow:0 0 10px rgba(0,212,170,0.15), 0 0 40px rgba(0,212,170,0.08), 0 0 100px rgba(0,212,170,0.04);">
           <!-- Browser Chrome -->
           <div style="padding:10px 14px;background:rgba(0,0,0,0.3);border-bottom:1px solid var(--glass-border);display:flex;align-items:center;gap:6px;">
             <div style="width:8px;height:8px;border-radius:50%;background:#FF5F57;"></div>
@@ -1379,17 +1379,17 @@
         <div class="lens-step-desc">Continuously monitors every channel, every metric, every trend. Detects shifts before they become problems.</div>
       </div>
       <div class="lens-step">
-        <div class="lens-icon" style="color:var(--purple);"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg></div>
+        <div class="lens-icon" style="color:var(--teal);"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/><line x1="11" y1="8" x2="11" y2="14"/></svg></div>
         <div class="lens-step-title">Diagnose</div>
         <div class="lens-step-desc">Isolates root causes using benchmark comparison and evidence packets. Tells you why, not just what.</div>
       </div>
       <div class="lens-step">
-        <div class="lens-icon" style="color:var(--coral);"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
+        <div class="lens-icon" style="color:var(--teal);"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg></div>
         <div class="lens-step-title">Predict</div>
         <div class="lens-step-desc">Forecasts impact of detected shifts on final registration count and spend efficiency. Probability-weighted scenarios.</div>
       </div>
       <div class="lens-step">
-        <div class="lens-icon" style="color:var(--amber);"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+        <div class="lens-icon" style="color:var(--teal);"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
         <div class="lens-step-title">Prescribe</div>
         <div class="lens-step-desc">Delivers ranked recommendations with projected impact, effort, and risk. Ready to act on, not interpret.</div>
       </div>
@@ -1403,17 +1403,17 @@
         <div class="feature-desc">Real-time KPIs, forecast bands, constraint detection, and channel performance — all in one view. Screenshot-ready for your next board meeting.</div>
       </div>
       <div class="feature-card glass">
-        <div style="margin-bottom:12px;color:var(--coral);"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L2 22"/><path d="M22 2L15 22l-3-9-9-3z"/></svg></div>
+        <div style="margin-bottom:12px;color:var(--teal);"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L2 22"/><path d="M22 2L15 22l-3-9-9-3z"/></svg></div>
         <div class="feature-title">Funnel X-Ray</div>
         <div class="feature-desc">Visual flow diagrams with bottleneck analysis. See exactly where registrations drop off, why, and what to do about it.</div>
       </div>
       <div class="feature-card glass">
-        <div style="margin-bottom:12px;color:var(--purple);"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div style="margin-bottom:12px;color:var(--teal);"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
         <div class="feature-title">Creative Intelligence</div>
         <div class="feature-desc">Ad performance tracking with fatigue scoring, A/B test recommendations, and mockup galleries. Know which creative is working and which is dying.</div>
       </div>
       <div class="feature-card glass">
-        <div style="margin-bottom:12px;color:var(--amber);"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+        <div style="margin-bottom:12px;color:var(--teal);"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
         <div class="feature-title">Executive Narrative</div>
         <div class="feature-desc">AI-generated CMO-ready reports with forecast scenarios, confidence ratings, and priority actions. Present results, not data.</div>
       </div>
@@ -1423,7 +1423,7 @@
         <div class="feature-desc">Ask questions in plain English. "Why is LinkedIn CPA up this week?" Get answers backed by evidence, not generic suggestions.</div>
       </div>
       <div class="feature-card glass">
-        <div style="margin-bottom:12px;color:var(--coral);"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
+        <div style="margin-bottom:12px;color:var(--teal);"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></div>
         <div class="feature-title">Benchmark Engine</div>
         <div class="feature-desc">Every metric measured against 600+ events. Know if your 3.2% conversion rate is good, bad, or catastrophic — for your event type.</div>
       </div>
