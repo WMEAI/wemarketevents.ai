@@ -277,6 +277,27 @@
       background: var(--glass-hover);
       border-color: rgba(255,255,255,0.15);
     }
+    .btn-hero {
+      background: linear-gradient(135deg, #00D4AA 0%, #00E8BB 50%, #00D4AA 100%);
+      background-size: 200% 200%;
+      color: var(--bg-deep);
+      font-size: 17px;
+      padding: 18px 40px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      box-shadow: 0 0 40px rgba(0,212,170,0.3), 0 8px 32px rgba(0,0,0,0.3);
+      animation: heroGlow 3s ease-in-out infinite;
+      position: relative;
+    }
+    .btn-hero:hover {
+      background: linear-gradient(135deg, #00E8BB 0%, #00FFD0 50%, #00E8BB 100%);
+      box-shadow: 0 0 60px rgba(0,212,170,0.5), 0 12px 40px rgba(0,0,0,0.3);
+      transform: translateY(-2px) scale(1.02);
+    }
+    @keyframes heroGlow {
+      0%, 100% { background-position: 0% 50%; box-shadow: 0 0 40px rgba(0,212,170,0.3), 0 8px 32px rgba(0,0,0,0.3); }
+      50% { background-position: 100% 50%; box-shadow: 0 0 60px rgba(0,212,170,0.45), 0 8px 32px rgba(0,0,0,0.3); }
+    }
     .btn-purple {
       background: var(--purple);
       color: white;
@@ -1277,9 +1298,9 @@
     EventPulse detects performance shifts in real time, diagnoses what's causing them, and tells you exactly what to do. Benchmarked against 600+ events.
   </p>
   <div class="hero-actions fade-in delay-3">
-    <a href="#audit" class="btn btn-primary">Get Free AI Audit →</a>
-    <a href="https://demo.wemarketevents.ai" target="_blank" class="btn btn-secondary">See Live Demo</a>
-    <a href="#results" class="btn btn-secondary">View Results</a>
+    <a href="https://demo.wemarketevents.ai" target="_blank" class="btn btn-hero">Experience the Platform →</a>
+    <a href="#audit" class="btn btn-secondary">Get Free AI Audit</a>
+    <a href="#results" class="btn btn-secondary">See Case Studies</a>
   </div>
 
   <!-- CLIENT LOGO STRIP -->
