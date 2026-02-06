@@ -1305,64 +1305,11 @@
   </div>
 
   <!-- DASHBOARD PREVIEW -->
-  <div class="dashboard-preview fade-in delay-4">
-    <div class="dashboard-topbar">
-      <div class="dashboard-dot red"></div>
-      <div class="dashboard-dot yellow"></div>
-      <div class="dashboard-dot green"></div>
-      <div class="dashboard-url">demo.wemarketevents.ai — Command Center</div>
-    </div>
-    <div class="dashboard-body">
-      <div class="dash-kpi">
-        <div class="dash-kpi-label">Total Registrations</div>
-        <div class="dash-kpi-value" style="color:var(--teal)">4,847</div>
-        <div class="dash-kpi-change up">+12.3% vs forecast</div>
-      </div>
-      <div class="dash-kpi">
-        <div class="dash-kpi-label">Campaign Spend</div>
-        <div class="dash-kpi-value" style="color:var(--purple)">€38,290</div>
-        <div class="dash-kpi-change up">82% utilised</div>
-      </div>
-      <div class="dash-kpi">
-        <div class="dash-kpi-label">Completion Rate</div>
-        <div class="dash-kpi-value" style="color:var(--teal)">67.2%</div>
-        <div class="dash-kpi-change up">+4.1pp vs benchmark</div>
-      </div>
-      <div class="dash-kpi">
-        <div class="dash-kpi-label">Active Constraints</div>
-        <div class="dash-kpi-value" style="color:var(--coral)">2</div>
-        <div class="dash-kpi-change down">LinkedIn CPM spike detected</div>
-      </div>
-      <div class="dash-chart">
-        <div class="dash-chart-label">Registration Pace vs Forecast</div>
-        <svg viewBox="0 0 1000 130" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="tealGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="rgba(0,212,170,0.3)"/>
-              <stop offset="100%" stop-color="rgba(0,212,170,0)"/>
-            </linearGradient>
-            <linearGradient id="purpleGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stop-color="rgba(99,91,255,0.15)"/>
-              <stop offset="100%" stop-color="rgba(99,91,255,0)"/>
-            </linearGradient>
-          </defs>
-          <!-- Forecast band -->
-          <path d="M0,110 Q100,100 200,85 T400,60 T600,40 T800,25 T1000,15 L1000,130 L0,130Z" fill="url(#purpleGrad)" opacity="0.5"/>
-          <!-- Actual line area -->
-          <path d="M0,115 Q80,108 160,95 T320,72 T480,50 T640,35 T750,28 L750,130 L0,130Z" fill="url(#tealGrad)"/>
-          <!-- Actual line -->
-          <path d="M0,115 Q80,108 160,95 T320,72 T480,50 T640,35 T750,28" fill="none" stroke="var(--teal)" stroke-width="2.5"/>
-          <!-- Forecast dashed -->
-          <path d="M750,28 Q850,20 1000,15" fill="none" stroke="var(--purple)" stroke-width="2" stroke-dasharray="6,4" opacity="0.7"/>
-        </svg>
-      </div>
-      <div class="dash-alert">
-        <div class="dash-alert-icon">⚡</div>
-        <div class="dash-alert-text">
-          <strong>Lens Alert:</strong> LinkedIn CPM up 23% this week. Recommend shifting €2,400 to Google Search where CPA is 41% lower. Projected impact: +89 registrations.
-        </div>
-      </div>
-    </div>
+  <div class="dashboard-preview fade-in delay-4" style="max-width:1000px;margin:0 auto;border-radius:var(--radius-xl);overflow:hidden;border:1px solid var(--glass-border);box-shadow:0 0 0 1px rgba(255,255,255,0.05),0 24px 80px rgba(0,0,0,0.5),0 0 120px var(--teal-glow);">
+    <picture>
+      <source srcset="/src/images/event-pulse-dashboard.webp" type="image/webp">
+      <img src="/src/images/event-pulse-dashboard.png" alt="Event Pulse Command Center — AI-powered event marketing intelligence dashboard showing registration pace forecasting, spend tracking, conversion analysis, and Lens AI insights" width="1400" height="728" style="width:100%;height:auto;display:block;" loading="lazy">
+    </picture>
   </div>
 </section>
 
