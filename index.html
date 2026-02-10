@@ -1497,7 +1497,6 @@
         </p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:24px;">
           <a href="https://calendar.app.google/z5PXRpTRspdLjUNN8" target="_blank" class="btn btn-hero">Book a Demo →</a>
-          <a href="https://demo.wemarketevents.ai" target="_blank" class="btn btn-secondary">Experience the Platform →</a>
         </div>
     </div>
     <!-- EventPulse Demo Video -->
@@ -1738,7 +1737,7 @@
   <!-- Audit as secondary path -->
   <div style="text-align:center;margin-top:48px;padding:32px;border-radius:var(--radius-lg);border:1px solid var(--glass-border);background:var(--glass);">
     <p style="color:var(--text-secondary);font-size:15px;margin-bottom:12px;">Not ready for a platform yet? Start with a free assessment.</p>
-    <a href="#audit" class="btn btn-secondary" style="font-size:14px;">Get Free AI Readiness Audit →</a>
+    <a href="mailto:eric@wemarket.events?subject=AI%20Readiness%20Audit%20Request" class="btn btn-secondary" style="font-size:14px;">Request Free AI Readiness Audit →</a>
   </div>
 </section>
 
@@ -1954,13 +1953,13 @@
   </div>
 </section>
 
-<!-- ═══ STILL EXPLORING? ═══ -->
-<section class="section" id="audit" style="padding-top:40px;padding-bottom:40px;">
+<!-- ═══ BOOK A DEMO ═══ -->
+<section class="section" id="demo" style="padding-top:40px;padding-bottom:40px;">
   <div class="cta-box glass" style="max-width:700px;margin:0 auto;">
-    <div class="section-label" style="justify-content:center;">Still Exploring?</div>
-    <h2 class="cta-title" style="font-size:28px;">Get a Free AI Readiness Audit</h2>
+    <div class="section-label" style="justify-content:center;">Get Started</div>
+    <h2 class="cta-title" style="font-size:28px;">See EventPulse With Your Data</h2>
     <p class="cta-subtitle" style="font-size:14px;">
-      Not ready to commit? We'll assess your event marketing, identify your biggest leaks, and show you exactly where EventPulse would make the most impact. No credit card. No sales pitch. 48-hour turnaround.
+      15 minutes. No slides. We'll walk you through EventPulse using your event type — so you see exactly what it would find, diagnose, and recommend for your campaigns.
     </p>
 
     <form class="audit-form" id="hs-audit-form">
@@ -1976,9 +1975,13 @@
         <option value="15+">15+ events</option>
       </select>
       <input type="url" name="website" placeholder="Event website (optional)" class="full-width" style="grid-column:1/-1;">
-      <button type="submit" class="btn btn-primary full-width" style="border:none;cursor:pointer;">Request Free Audit → 48hr Turnaround</button>
+      <button type="submit" class="btn btn-primary full-width" style="border:none;cursor:pointer;">Book My Demo →</button>
       <div id="hs-form-msg" style="display:none;grid-column:1/-1;text-align:center;padding:16px;border-radius:8px;font-size:14px;"></div>
     </form>
+
+    <div style="text-align:center;margin-top:24px;padding-top:20px;border-top:1px solid var(--glass-border);">
+      <p style="color:var(--text-muted);font-size:13px;">Not ready for a demo? <a href="mailto:eric@wemarket.events?subject=AI%20Readiness%20Audit%20Request" style="color:var(--teal);text-decoration:none;">Request a free AI Readiness Audit instead →</a></p>
+    </div>
   </div>
 </section>
 
@@ -2085,7 +2088,7 @@ if (auditForm) {
             context: {
               hutk: hutk,
               pageUri: window.location.href,
-              pageName: 'AI Readiness Audit Request'
+              pageName: 'EventPulse Demo Request'
             },
             legalConsentOptions: {
               consent: {
@@ -2102,7 +2105,7 @@ if (auditForm) {
         formMsg.style.background = 'rgba(0,212,170,0.1)';
         formMsg.style.border = '1px solid rgba(0,212,170,0.3)';
         formMsg.style.color = 'var(--teal)';
-        formMsg.innerHTML = '✓ <strong>Audit requested!</strong> Check your inbox within 48 hours. We\'ll send your AI Readiness Score, opportunity cost analysis, and priority actions.';
+        formMsg.innerHTML = '✓ <strong>Demo requested!</strong> We\'ll be in touch within 24 hours to schedule your personalized EventPulse walkthrough.';
         auditForm.querySelectorAll('input, select').forEach(el => el.disabled = true);
         btn.textContent = 'Submitted ✓';
         btn.style.background = 'rgba(0,212,170,0.2)';
@@ -2115,7 +2118,7 @@ if (auditForm) {
       formMsg.style.background = 'rgba(0,212,170,0.1)';
       formMsg.style.border = '1px solid rgba(0,212,170,0.3)';
       formMsg.style.color = 'var(--teal)';
-      formMsg.innerHTML = '✓ <strong>Request received!</strong> We\'ll be in touch within 48 hours.';
+      formMsg.innerHTML = '✓ <strong>Request received!</strong> We\'ll be in touch within 24 hours to schedule your demo.';
       btn.textContent = 'Submitted ✓';
       btn.style.opacity = '1';
       console.log('HubSpot form fallback — contact identified via tracking code');
