@@ -1440,6 +1440,34 @@
       .logo-strip { gap: 20px; }
       .audit-form { grid-template-columns: 1fr; }
       .micro-testimonial { flex-direction: column; text-align: center; }
+      .btn-hero, .btn-hero-secondary {
+        font-size: 16px;
+        padding: 16px 36px;
+      }
+      .hero .section-subtitle { font-size: 16px; }
+      .hero-actions { gap: 10px; }
+    }
+
+    @media (max-width: 480px) {
+      .hero { padding-top: 80px; }
+      .hero .section-title { font-size: 32px; letter-spacing: -1px; }
+      .hero .section-subtitle { font-size: 15px; padding: 0 8px; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn-hero, .btn-hero-secondary {
+        font-size: 15px;
+        padding: 16px 32px;
+        width: 100%;
+        text-align: center;
+      }
+      .section-title { font-size: 28px; letter-spacing: -0.5px; }
+      .section-subtitle { font-size: 15px; }
+      .steps-grid, .lens-loop { grid-template-columns: 1fr; }
+      .case-metrics { grid-template-columns: 1fr 1fr; }
+      .logo-strip { gap: 14px; flex-wrap: wrap; justify-content: center; }
+      .client-logo { height: 22px !important; }
+      .cta-box { padding: 24px 16px; }
+      .ep-title { font-size: 28px; }
+      .footer-links { flex-direction: column; gap: 12px; }
     }
 
     /* ═══ SMOOTH ENTRANCE ANIMATIONS ═══ */
