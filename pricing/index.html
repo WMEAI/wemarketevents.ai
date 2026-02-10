@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing — EventPulse by WME.AI</title>
+  <meta name="description" content="EventPulse pricing for AI-powered B2B event marketing intelligence. Two tiers: EventPulse + Lens ($800/mo) and Command ($1,200/mo). Pay 6 months, get 8.">
+  <meta property="og:title" content="EventPulse Pricing — AI Event Marketing Intelligence">
+  <meta property="og:description" content="Enterprise intelligence without enterprise complexity. From $800/mo.">
+  <meta property="og:url" content="https://wemarketevents.ai/pricing">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="/src/images/favicon.svg">
+
+  <!-- HubSpot Tracking Code -->
+  <script type="text/javascript" id="hs-script-loader" async defer src="//js-eu1.hs-scripts.com/144201570.js"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-deep: #06090F;
+      --bg-surface: #0B1120;
+      --bg-elevated: #111827;
+      --bg-card: rgba(17, 24, 39, 0.6);
+      --glass: rgba(255,255,255,0.04);
+      --glass-border: rgba(255,255,255,0.08);
+      --glass-hover: rgba(255,255,255,0.07);
+      --text-primary: #F1F5F9;
+      --text-secondary: #94A3B8;
+      --text-muted: #64748B;
+      --teal: #00D4AA;
+      --teal-glow: rgba(0,212,170,0.15);
+      --teal-dim: rgba(0,212,170,0.6);
+      --purple: #635BFF;
+      --purple-glow: rgba(99,91,255,0.15);
+      --purple-dim: rgba(99,91,255,0.6);
+      --coral: #FF6B6B;
+      --coral-glow: rgba(255,107,107,0.12);
+      --amber: #F59E0B;
+      --navy: #1e293b;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 16px;
+      --radius-xl: 20px;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg-deep);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* ═══ AMBIENT ═══ */
+    .ambient { position:fixed; inset:0; z-index:0; pointer-events:none; overflow:hidden; }
+    .ambient-orb { position:absolute; border-radius:50%; filter:blur(120px); opacity:0.35; animation:drift 20s ease-in-out infinite; }
+    .ambient-orb.teal { width:600px; height:600px; background:radial-gradient(circle, var(--teal) 0%, transparent 70%); top:-200px; right:-100px; }
+    .ambient-orb.purple { width:500px; height:500px; background:radial-gradient(circle, var(--purple) 0%, transparent 70%); bottom:-150px; left:-100px; animation-delay:-7s; }
+    @keyframes drift {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      33% { transform: translate(30px, -20px) scale(1.05); }
+      66% { transform: translate(-20px, 15px) scale(0.95); }
+    }
+
+    .grid-overlay { position:fixed; inset:0; z-index:0; pointer-events:none;
+      background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    /* ═══ CONTAINER ═══ */
+    .container { max-width:1200px; margin:0 auto; padding:0 24px; position:relative; z-index:1; }
+
+    /* ═══ NAV ═══ */
+    .nav {
+      position: fixed; top: 16px; left: 50%; transform: translateX(-50%);
+      z-index: 1000; display: flex; align-items: center; gap: 32px;
+      padding: 12px 28px; border-radius: 100px;
+      background: rgba(11, 17, 32, 0.85); backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .nav-logo { font-weight: 800; font-size: 18px; color: var(--teal); letter-spacing: -0.5px; text-decoration: none; }
+    .nav-logo span { color: var(--text-secondary); }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 14px; font-weight: 500; transition: 0.2s; }
+    .nav-links a:hover { color: var(--text-primary); }
+    .nav-cta {
+      background: var(--teal); color: var(--bg-deep); padding: 8px 20px;
+      border-radius: 100px; font-weight: 700; font-size: 13px;
+      text-decoration: none; transition: 0.2s;
+    }
+    .nav-cta:hover { background: #00E8BB; }
+    .hamburger { display:none; flex-direction:column; gap:4px; cursor:pointer; z-index:1001; }
+    .hamburger span { width:20px; height:2px; background:var(--text-primary); transition:0.3s; }
+
+    /* ═══ HERO ═══ */
+    .hero { text-align:center; padding:120px 0 40px; }
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:8px; padding:6px 16px;
+      background:var(--glass); border:1px solid var(--glass-border);
+      border-radius:100px; font-size:12px; font-weight:500;
+      color:var(--text-secondary); margin-bottom:24px;
+    }
+    .hero-badge .dot { width:6px; height:6px; background:var(--teal); border-radius:50%; animation:pulse-dot 2s infinite; }
+    @keyframes pulse-dot { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 56px); font-weight: 800;
+      line-height: 1.1; letter-spacing: -1.5px; margin-bottom: 16px;
+    }
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, var(--teal), var(--purple));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .hero p { font-size:18px; color:var(--text-secondary); max-width:600px; margin:0 auto 32px; line-height:1.7; }
+    .hero-stats {
+      display:flex; justify-content:center; gap:48px; margin-top:40px;
+      padding-top:40px; border-top:1px solid var(--glass-border);
+    }
+    .hero-stat { text-align:center; }
+    .hero-stat .val { font-size:28px; font-weight:700; color:var(--text-primary); letter-spacing:-0.5px; }
+    .hero-stat .val span { color:var(--teal); }
+    .hero-stat .label { font-size:11px; color:var(--text-muted); margin-top:4px; text-transform:uppercase; letter-spacing:0.06em; }
+
+    /* ═══ TOGGLE ═══ */
+    .toggle-wrap { display:flex; justify-content:center; align-items:center; gap:16px; margin:48px 0 12px; }
+    .toggle-label { font-size:14px; font-weight:500; color:var(--text-muted); transition:0.2s; cursor:pointer; }
+    .toggle-label.active { color:var(--text-primary); }
+    .toggle {
+      width:52px; height:28px; border-radius:14px; background:var(--bg-elevated);
+      border:1px solid var(--glass-border); cursor:pointer; position:relative; transition:0.3s;
+    }
+    .toggle::after {
+      content:''; position:absolute; top:3px; left:3px; width:20px; height:20px;
+      border-radius:50%; background:var(--teal); transition:0.3s;
+      box-shadow:0 0 12px var(--teal-glow);
+    }
+    .toggle.annual::after { left:27px; }
+    .save-badge {
+      font-size:11px; font-weight:700; color:var(--teal);
+      background:rgba(0,212,170,0.1); padding:3px 10px; border-radius:100px; letter-spacing:0.04em;
+    }
+    .billing-note { text-align:center; font-size:13px; color:var(--text-muted); margin-bottom:48px; }
+
+    /* ═══ PRICING GRID ═══ */
+    .pricing-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; max-width:900px; margin:0 auto 80px; }
+
+    .price-card {
+      border-radius:var(--radius-xl); padding:40px 32px;
+      background:var(--bg-card); backdrop-filter:blur(12px);
+      border:1px solid var(--glass-border); position:relative; transition:0.3s;
+    }
+    .price-card:hover { border-color:rgba(255,255,255,0.12); transform:translateY(-4px); }
+    .price-card.featured {
+      background:linear-gradient(165deg, rgba(0,212,170,0.06) 0%, var(--bg-card) 40%, rgba(99,91,255,0.04) 100%);
+      border-color:rgba(0,212,170,0.25);
+      box-shadow:0 0 80px rgba(0,212,170,0.08), 0 24px 48px rgba(0,0,0,0.3);
+    }
+    .popular-tag {
+      position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+      background:linear-gradient(135deg, var(--teal), #00E8BB);
+      color:var(--bg-deep); font-size:11px; font-weight:700;
+      letter-spacing:0.08em; text-transform:uppercase;
+      padding:5px 20px; border-radius:100px;
+    }
+
+    .card-icon {
+      width:44px; height:44px; border-radius:12px;
+      display:flex; align-items:center; justify-content:center;
+      margin-bottom:20px; font-size:18px; font-weight:800;
+    }
+    .tier-lens .card-icon { background:rgba(0,212,170,0.1); border:1px solid rgba(0,212,170,0.2); color:var(--teal); }
+    .tier-cmd .card-icon { background:rgba(99,91,255,0.1); border:1px solid rgba(99,91,255,0.2); color:var(--purple); }
+
+    .card-tier { font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); margin-bottom:4px; }
+    .card-name { font-size:24px; font-weight:700; letter-spacing:-0.5px; margin-bottom:8px; }
+    .tier-lens .card-name { color:var(--teal); }
+    .tier-cmd .card-name { color:var(--purple); }
+    .card-desc { font-size:14px; color:var(--text-secondary); line-height:1.6; margin-bottom:24px; min-height:44px; }
+
+    .price-row { display:flex; align-items:baseline; gap:4px; margin-bottom:4px; }
+    .price-currency { font-size:18px; font-weight:600; color:var(--text-secondary); align-self:flex-start; margin-top:8px; }
+    .price-amount { font-size:48px; font-weight:800; letter-spacing:-2px; line-height:1; }
+    .tier-lens .price-amount { color:var(--teal); }
+    .tier-cmd .price-amount { color:var(--purple); }
+    .price-period { font-size:14px; color:var(--text-muted); font-weight:500; }
+    .price-effective { font-size:12px; color:var(--text-muted); margin-bottom:6px; }
+    .price-effective span { color:var(--teal); font-weight:600; }
+    .price-commitment { font-size:12px; color:var(--text-muted); margin-bottom:24px; padding-bottom:24px; border-bottom:1px solid var(--glass-border); }
+
+    .card-cta {
+      display:block; width:100%; padding:16px; border-radius:12px;
+      text-align:center; font-size:15px; font-weight:700;
+      text-decoration:none; transition:0.3s; cursor:pointer; border:none;
+    }
+    .tier-lens .card-cta {
+      background:linear-gradient(135deg, var(--teal), #00E8BB);
+      color:var(--bg-deep); box-shadow:0 4px 24px rgba(0,212,170,0.25);
+    }
+    .tier-lens .card-cta:hover { box-shadow:0 8px 40px rgba(0,212,170,0.35); transform:translateY(-2px); }
+    .tier-cmd .card-cta {
+      background:linear-gradient(135deg, var(--purple), #7B74FF);
+      color:#fff; box-shadow:0 4px 24px rgba(99,91,255,0.2);
+    }
+    .tier-cmd .card-cta:hover { box-shadow:0 8px 40px rgba(99,91,255,0.3); transform:translateY(-2px); }
+
+    .features-title { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-muted); margin:24px 0 16px; }
+    .feature-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
+    .feature-list li {
+      font-size:13px; color:var(--text-secondary); display:flex;
+      align-items:flex-start; gap:10px; line-height:1.5;
+    }
+    .feature-list li::before {
+      content:'✓'; font-weight:700; font-size:11px; flex-shrink:0;
+      width:18px; height:18px; display:flex; align-items:center; justify-content:center;
+      border-radius:50%; margin-top:1px;
+    }
+    .tier-lens .feature-list li::before { color:var(--teal); background:rgba(0,212,170,0.1); }
+    .tier-cmd .feature-list li::before { color:var(--purple); background:rgba(99,91,255,0.1); }
+    .feature-list li.highlight { color:var(--text-primary); font-weight:500; }
+
+    /* ═══ LIGHTS ON ═══ */
+    .lights-section { text-align:center; padding:60px 0 80px; position:relative; }
+    .lights-section::before {
+      content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
+      width:200px; height:1px; background:linear-gradient(90deg, transparent, var(--teal), transparent);
+    }
+    .section-label {
+      display:inline-flex; align-items:center; gap:6px; padding:6px 14px;
+      border-radius:100px; font-size:12px; font-weight:600;
+      margin-bottom:20px; letter-spacing:0.02em;
+    }
+    .section-label.amber { background:rgba(245,158,11,0.1); border:1px solid rgba(245,158,11,0.2); color:var(--amber); }
+    .section-label.teal { background:rgba(0,212,170,0.1); border:1px solid rgba(0,212,170,0.2); color:var(--teal); }
+    .section-title { font-size:28px; font-weight:700; letter-spacing:-0.5px; margin-bottom:12px; }
+    .section-subtitle { font-size:16px; color:var(--text-secondary); max-width:600px; margin:0 auto 32px; line-height:1.7; }
+
+    .lo-cards { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-width:800px; margin:0 auto; }
+    .lo-card {
+      padding:24px; border-radius:var(--radius-md);
+      background:var(--glass); border:1px solid var(--glass-border); text-align:left;
+    }
+    .lo-card-icon {
+      width:32px; height:32px; border-radius:8px;
+      background:rgba(0,212,170,0.1); border:1px solid rgba(0,212,170,0.15);
+      display:flex; align-items:center; justify-content:center;
+      margin-bottom:12px; font-size:14px; font-weight:700; color:var(--teal);
+    }
+    .lo-card h4 { font-size:14px; font-weight:600; margin-bottom:6px; }
+    .lo-card p { font-size:13px; color:var(--text-muted); line-height:1.5; }
+
+    /* ═══ ROI CALCULATOR ═══ */
+    .roi-section { padding:80px 0; position:relative; }
+    .roi-section::before {
+      content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
+      width:80%; max-width:600px; height:1px;
+      background:linear-gradient(90deg, transparent, var(--glass-border), transparent);
+    }
+    .roi-box {
+      background:var(--bg-card); backdrop-filter:blur(12px);
+      border:1px solid var(--glass-border); border-radius:var(--radius-xl);
+      padding:48px; max-width:900px; margin:0 auto;
+    }
+    .roi-header { text-align:center; margin-bottom:40px; }
+    .roi-header h2 { font-size:28px; font-weight:700; letter-spacing:-0.5px; margin-bottom:8px; }
+    .roi-header p { font-size:15px; color:var(--text-secondary); }
+    .roi-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; }
+    .roi-inputs { display:flex; flex-direction:column; gap:24px; }
+    .roi-field label {
+      display:block; font-size:11px; font-weight:600; text-transform:uppercase;
+      letter-spacing:0.06em; color:var(--text-muted); margin-bottom:8px;
+    }
+    .roi-field input[type=range] {
+      width:100%; height:6px; -webkit-appearance:none; background:var(--bg-elevated);
+      border-radius:3px; outline:none; border:1px solid var(--glass-border);
+    }
+    .roi-field input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance:none; width:20px; height:20px; border-radius:50%;
+      background:var(--teal); cursor:pointer; box-shadow:0 0 12px var(--teal-glow);
+    }
+    .roi-value { display:flex; justify-content:space-between; align-items:center; margin-top:6px; }
+    .roi-value span { font-size:20px; font-weight:700; color:var(--text-primary); font-family:'JetBrains Mono', monospace; }
+    .roi-value small { font-size:12px; color:var(--text-muted); }
+    .roi-results {
+      background:var(--glass); border:1px solid var(--glass-border);
+      border-radius:var(--radius-lg); padding:32px;
+    }
+    .roi-results h3 {
+      font-size:12px; font-weight:600; text-transform:uppercase;
+      letter-spacing:0.06em; color:var(--text-muted); margin-bottom:20px;
+    }
+    .roi-metric { margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--glass-border); }
+    .roi-metric:last-child { margin-bottom:0; padding-bottom:0; border-bottom:none; }
+    .roi-metric .metric-label { font-size:13px; color:var(--text-secondary); margin-bottom:4px; }
+    .roi-metric .metric-value { font-size:28px; font-weight:700; font-family:'JetBrains Mono', monospace; letter-spacing:-0.5px; }
+    .roi-metric .metric-value.positive { color:var(--teal); }
+    .roi-metric .metric-value.warn { color:var(--amber); }
+    .roi-metric .metric-note { font-size:11px; color:var(--text-muted); margin-top:2px; }
+
+    /* ═══ COMPARE TABLE ═══ */
+    .compare-section { padding:80px 0; position:relative; }
+    .compare-section::before {
+      content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
+      width:80%; max-width:600px; height:1px;
+      background:linear-gradient(90deg, transparent, var(--glass-border), transparent);
+    }
+    .compare-table {
+      width:100%; border-collapse:separate; border-spacing:0;
+      background:var(--bg-card); border:1px solid var(--glass-border);
+      border-radius:var(--radius-lg); overflow:hidden;
+    }
+    .compare-table th, .compare-table td { padding:14px 20px; text-align:left; font-size:13px; border-bottom:1px solid var(--glass-border); }
+    .compare-table thead th { background:var(--glass); font-weight:600; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); }
+    .compare-table thead th:last-child { color:var(--teal); }
+    .compare-table tbody td { color:var(--text-secondary); }
+    .compare-table tbody td:first-child { font-weight:500; color:var(--text-primary); }
+    .compare-table tbody td:last-child { color:var(--teal); font-weight:600; }
+    .compare-table tbody tr:last-child td { border-bottom:none; }
+    .compare-table tbody tr:hover { background:var(--glass); }
+    .th-sub { display:block; font-size:10px; color:var(--text-muted); font-weight:400; margin-top:2px; }
+
+    /* ═══ FAQ ═══ */
+    .faq-section { padding:80px 0; position:relative; }
+    .faq-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:960px; margin:0 auto; }
+    .faq-item {
+      background:var(--bg-card); backdrop-filter:blur(12px);
+      border:1px solid var(--glass-border); border-radius:var(--radius-md);
+      padding:24px; cursor:pointer; transition:0.2s;
+    }
+    .faq-item:hover { border-color:rgba(255,255,255,0.12); }
+    .faq-q {
+      font-size:14px; font-weight:600; color:var(--text-primary);
+      display:flex; justify-content:space-between; align-items:center; gap:12px;
+    }
+    .faq-q::after { content:'+'; font-size:18px; color:var(--text-muted); transition:0.2s; flex-shrink:0; }
+    .faq-item.open .faq-q::after { content:'\2212'; color:var(--teal); }
+    .faq-a { font-size:13px; color:var(--text-secondary); line-height:1.7; max-height:0; overflow:hidden; transition:0.4s ease; }
+    .faq-item.open .faq-a { max-height:300px; margin-top:12px; }
+
+    /* ═══ FINAL CTA ═══ */
+    .final-cta { text-align:center; padding:80px 0 100px; position:relative; }
+    .final-cta::before {
+      content:''; position:absolute; top:0; left:50%; transform:translateX(-50%);
+      width:200px; height:1px; background:linear-gradient(90deg, transparent, var(--teal), transparent);
+    }
+    .final-cta h2 { font-size:clamp(28px, 4vw, 42px); font-weight:800; letter-spacing:-1px; margin-bottom:12px; }
+    .final-cta h2 .highlight {
+      background:linear-gradient(135deg, var(--teal), var(--purple));
+      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+    }
+    .final-cta p { font-size:16px; color:var(--text-secondary); max-width:480px; margin:0 auto 32px; }
+    .cta-buttons { display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+    .btn-teal {
+      padding:16px 40px; border-radius:100px;
+      background:linear-gradient(135deg, var(--teal), #00E8BB);
+      color:var(--bg-deep); font-size:16px; font-weight:700;
+      text-decoration:none; transition:0.3s; border:none; cursor:pointer;
+      box-shadow:0 4px 24px rgba(0,212,170,0.25);
+    }
+    .btn-teal:hover { box-shadow:0 8px 40px rgba(0,212,170,0.35); transform:translateY(-2px); }
+    .btn-outline {
+      padding:16px 40px; border-radius:100px;
+      background:transparent; border:1px solid var(--glass-border);
+      color:var(--text-primary); font-size:16px; font-weight:600;
+      text-decoration:none; transition:0.3s;
+    }
+    .btn-outline:hover { background:var(--glass-hover); border-color:rgba(255,255,255,0.15); }
+
+    /* ═══ FOOTER ═══ */
+    .footer { border-top:1px solid var(--glass-border); padding:32px 0; text-align:center; }
+    .footer p { font-size:12px; color:var(--text-muted); }
+    .footer a { color:var(--text-secondary); text-decoration:none; }
+    .footer a:hover { color:var(--teal); }
+    .footer-links { display:flex; justify-content:center; gap:24px; margin-bottom:12px; }
+    .footer-links a { font-size:13px; }
+
+    /* ═══ ANIMATIONS ═══ */
+    @keyframes fade-up { from{opacity:0;transform:translateY(24px)} to{opacity:1;transform:translateY(0)} }
+    .animate { animation:fade-up 0.6s ease forwards; opacity:0; }
+    .d1{animation-delay:.1s} .d2{animation-delay:.2s} .d3{animation-delay:.3s} .d4{animation-delay:.4s}
+
+    /* ═══ RESPONSIVE ═══ */
+    @media(max-width:768px) {
+      .hamburger { display:flex; }
+      .nav-links { display:none; }
+      .nav { padding:10px 16px; gap:12px; }
+      .pricing-grid { grid-template-columns:1fr; max-width:420px; }
+      .price-card.featured { order:-1; }
+      .roi-grid { grid-template-columns:1fr; }
+      .compare-table { font-size:11px; display:block; overflow-x:auto; }
+      .faq-grid { grid-template-columns:1fr; }
+      .hero-stats { flex-wrap:wrap; gap:24px; }
+      .lo-cards { grid-template-columns:1fr; }
+      .hero { padding-top:80px; }
+    }
+
+    @media(max-width:480px) {
+      .hero h1 { font-size:28px; letter-spacing:-0.5px; }
+      .hero p { font-size:15px; }
+      .price-card { padding:28px 20px; }
+      .price-amount { font-size:40px; }
+      .roi-box { padding:24px 16px; }
+      .cta-buttons { flex-direction:column; align-items:center; }
+      .btn-teal, .btn-outline { width:100%; text-align:center; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="ambient">
+  <div class="ambient-orb teal"></div>
+  <div class="ambient-orb purple"></div>
+</div>
+<div class="grid-overlay"></div>
+
+<!-- ═══ NAV ═══ -->
+<nav class="nav">
+  <a href="/" class="nav-logo">WME<span>.AI</span></a>
+  <div class="nav-links">
+    <a href="/">Home</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#calculator">ROI Calculator</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://calendar.app.google/z5PXRpTRspdLjUNN8" target="_blank" class="nav-cta">Book a Demo</a>
+  </div>
+  <div class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('active'); this.classList.toggle('active');">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<div class="container">
+<section class="hero">
+  <div class="hero-badge animate d1"><span class="dot"></span> Pricing</div>
+  <h1 class="animate d2">Enterprise intelligence.<br><span class="highlight">Without enterprise complexity.</span></h1>
+  <p class="animate d3">EventPulse gives mid-market event organisers the AI-powered analytics that enterprise teams spend six figures building in-house. Pay for 6 months. Get 8 months of coverage.</p>
+  <div class="hero-stats animate d4">
+    <div class="hero-stat">
+      <div class="val">600<span>+</span></div>
+      <div class="label">Events benchmarked</div>
+    </div>
+    <div class="hero-stat">
+      <div class="val">48<span>hr</span></div>
+      <div class="label">Setup time</div>
+    </div>
+    <div class="hero-stat">
+      <div class="val">10–17<span>x</span></div>
+      <div class="label">Typical ROI</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ═══ BILLING TOGGLE ═══ -->
+<div class="container" id="pricing">
+  <div class="toggle-wrap animate d3">
+    <span class="toggle-label active" data-billing="monthly">6-month engagement</span>
+    <div class="toggle" id="billingToggle" role="button" tabindex="0"></div>
+    <span class="toggle-label" data-billing="annual">Annual commitment</span>
+    <span class="save-badge">SAVE 20%</span>
+  </div>
+  <p class="billing-note animate d4">All plans include 2 months Lights On post-event coverage. <span class="mono" style="color:var(--teal)">Pay 6, get 8.</span></p>
+</div>
+
+<!-- ═══ PRICING CARDS ═══ -->
+<div class="container">
+<div class="pricing-grid">
+
+  <!-- EVENTPULSE + LENS -->
+  <div class="price-card tier-lens featured animate d2">
+    <div class="popular-tag">Most Popular</div>
+    <div class="card-icon">EP</div>
+    <div class="card-tier">Tier 1</div>
+    <div class="card-name">EventPulse + Lens</div>
+    <div class="card-desc">AI-powered intelligence that monitors, detects, diagnoses, predicts, and prescribes. Know what to do next.</div>
+    <div class="price-row">
+      <span class="price-currency">$</span>
+      <span class="price-amount" data-monthly="800" data-annual="640">800</span>
+      <span class="price-period">/mo</span>
+    </div>
+    <div class="price-effective">Effective cost with Lights On: <span data-eff-monthly="$600" data-eff-annual="$480">$600/mo</span></div>
+    <div class="price-commitment" data-commit-monthly="$4,800 for 6 months" data-commit-annual="$7,680 billed annually">$4,800 for 6 months</div>
+    <a href="https://calendar.app.google/z5PXRpTRspdLjUNN8" target="_blank" class="card-cta">Book a Demo</a>
+    <div class="features-title">What's included</div>
+    <ul class="feature-list">
+      <li class="highlight">Command Center — full real-time dashboard suite</li>
+      <li class="highlight">Lens AI Copilot — ask anything, get evidence-backed answers</li>
+      <li class="highlight">Forecast Engine with confidence bands</li>
+      <li class="highlight">What-If Simulations (budget, creative, CRO scenarios)</li>
+      <li class="highlight">Constraint diagnosis — the ONE fix that unlocks the biggest lift</li>
+      <li>Channel Analysis + Creative Performance</li>
+      <li>Audience Segments</li>
+      <li>All data connectors (GA4, Google Ads, LinkedIn, Meta, Email)</li>
+      <li>600+ event benchmark calibration</li>
+      <li>Priority shift detection with root-cause analysis</li>
+      <li>Executive Narrative (auto-generated CMO-ready briefs)</li>
+      <li>Morning intelligence brief</li>
+      <li>Weekly auto-generated report (PDF)</li>
+      <li>Custom alert thresholds + routing</li>
+    </ul>
+  </div>
+
+  <!-- COMMAND -->
+  <div class="price-card tier-cmd animate d3">
+    <div class="card-icon">C</div>
+    <div class="card-tier">Tier 2</div>
+    <div class="card-name">Command</div>
+    <div class="card-desc">Control everything. Multi-event portfolios, white-label reporting, and dedicated strategy sessions.</div>
+    <div class="price-row">
+      <span class="price-currency">$</span>
+      <span class="price-amount" data-monthly="1200" data-annual="960">1,200</span>
+      <span class="price-period">/mo</span>
+    </div>
+    <div class="price-effective">Effective cost with Lights On: <span data-eff-monthly="$900" data-eff-annual="$720">$900/mo</span></div>
+    <div class="price-commitment" data-commit-monthly="$7,200 for 6 months" data-commit-annual="$11,520 billed annually">$7,200 for 6 months</div>
+    <a href="https://calendar.app.google/z5PXRpTRspdLjUNN8" target="_blank" class="card-cta">Talk to Sales</a>
+    <div class="features-title">Everything in EventPulse + Lens, plus</div>
+    <ul class="feature-list">
+      <li class="highlight">Multi-event portfolio view</li>
+      <li class="highlight">Sponsor / partner performance cards</li>
+      <li class="highlight">Custom AI benchmark training for your vertical</li>
+      <li>White-label reporting (your brand on everything)</li>
+      <li>Quarterly strategy session with a senior analyst</li>
+      <li>Priority support with guaranteed SLA</li>
+      <li>Custom connector setup (non-standard data sources)</li>
+      <li>Historical campaign archiving + cross-event trends</li>
+    </ul>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══ LIGHTS ON ═══ -->
+<div class="container">
+<section class="lights-section">
+  <div class="section-label amber">Included with every plan</div>
+  <h2 class="section-title">2 Months Lights On — Free</h2>
+  <p class="section-subtitle">Your event doesn't end when the doors close. Every EventPulse engagement includes 2 months of post-event coverage at no extra cost.</p>
+  <div class="lo-cards">
+    <div class="lo-card">
+      <div class="lo-card-icon">D</div>
+      <h4>Full Dashboard Access</h4>
+      <p>All historical data, reports, and visualisations remain available for stakeholder reporting and board presentations.</p>
+    </div>
+    <div class="lo-card">
+      <div class="lo-card-icon">A</div>
+      <h4>Post-Event Analysis</h4>
+      <p>Lens generates your final campaign narrative — what worked, what didn't, and recommendations for next time.</p>
+    </div>
+    <div class="lo-card">
+      <div class="lo-card-icon">E</div>
+      <h4>Campaign Archive</h4>
+      <p>Everything is preserved and exportable. When your next event cycle begins, your benchmarks are already calibrated.</p>
+    </div>
+  </div>
+  <p style="margin-top:24px;font-size:13px;color:var(--text-muted)">After Lights On, keep access with <strong style="color:var(--text-primary)">Archive mode at $97/month</strong> — preserves dashboards and historical data between event cycles.</p>
+</section>
+</div>
+
+<!-- ═══ ROI CALCULATOR ═══ -->
+<div class="container" id="calculator">
+<section class="roi-section">
+  <div class="roi-box">
+    <div class="roi-header">
+      <h2>Calculate Your Return</h2>
+      <p>See what EventPulse recovers from your current marketing spend.</p>
+    </div>
+    <div class="roi-grid">
+      <div class="roi-inputs">
+        <div class="roi-field">
+          <label>Your event marketing budget</label>
+          <input type="range" id="budgetSlider" min="25000" max="500000" step="5000" value="100000">
+          <div class="roi-value">
+            <span id="budgetVal">$100,000</span>
+            <small>per event campaign</small>
+          </div>
+        </div>
+        <div class="roi-field">
+          <label>Events per year</label>
+          <input type="range" id="eventsSlider" min="1" max="12" step="1" value="2">
+          <div class="roi-value">
+            <span id="eventsVal">2</span>
+            <small>campaigns annually</small>
+          </div>
+        </div>
+        <div class="roi-field">
+          <label>Estimated waste in current approach</label>
+          <input type="range" id="wasteSlider" min="10" max="50" step="5" value="30">
+          <div class="roi-value">
+            <span id="wasteVal">30%</span>
+            <small>industry average: 30–40%</small>
+          </div>
+        </div>
+      </div>
+      <div class="roi-results">
+        <h3>Your projected return</h3>
+        <div class="roi-metric">
+          <div class="metric-label">Recoverable waste per campaign</div>
+          <div class="metric-value positive" id="roiWaste">$30,000</div>
+          <div class="metric-note">Budget x waste % x 50% conservative capture rate</div>
+        </div>
+        <div class="roi-metric">
+          <div class="metric-label">Annual value recovered</div>
+          <div class="metric-value positive" id="roiAnnual">$60,000</div>
+          <div class="metric-note">Across all campaigns</div>
+        </div>
+        <div class="roi-metric">
+          <div class="metric-label">EventPulse + Lens annual cost</div>
+          <div class="metric-value" id="roiCost" style="color:var(--text-secondary)">$4,800</div>
+          <div class="metric-note">6-month engagement</div>
+        </div>
+        <div class="roi-metric">
+          <div class="metric-label">Your ROI multiple</div>
+          <div class="metric-value warn" id="roiMultiple">12.5x</div>
+          <div class="metric-note">Value recovered / EventPulse investment</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ═══ COMPARE ═══ -->
+<div class="container" id="compare">
+<section class="compare-section">
+  <div style="text-align:center;margin-bottom:48px;">
+    <h2 class="section-title">What You're Actually Comparing</h2>
+    <p class="section-subtitle">EventPulse delivers AI intelligence at a fraction of enterprise platforms or specialist analytics teams.</p>
+  </div>
+  <div style="overflow-x:auto;border-radius:var(--radius-lg);">
+  <table class="compare-table">
+    <thead>
+      <tr>
+        <th>Capability</th>
+        <th>Dashboard Tools<br><span class="th-sub">$150–$500/mo</span></th>
+        <th>Event Platforms<br><span class="th-sub">$15k–$50k/yr</span></th>
+        <th>Enterprise BI<br><span class="th-sub">$50k–$150k/yr</span></th>
+        <th>EventPulse + Lens<br><span class="th-sub" style="color:var(--teal)">$800/mo</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Real-time dashboards</td><td>Basic</td><td>Basic</td><td>Yes</td><td>Event-native</td></tr>
+      <tr><td>AI shift detection</td><td>—</td><td>—</td><td>Basic</td><td>Every 15 min</td></tr>
+      <tr><td>Root-cause diagnosis</td><td>—</td><td>—</td><td>—</td><td>Automated</td></tr>
+      <tr><td>Forecast with confidence bands</td><td>—</td><td>—</td><td>Custom build</td><td>Built-in</td></tr>
+      <tr><td>What-if simulations</td><td>—</td><td>—</td><td>Custom build</td><td>One click</td></tr>
+      <tr><td>AI Copilot (natural language)</td><td>Limited</td><td>—</td><td>—</td><td>Event-trained</td></tr>
+      <tr><td>Event benchmark database</td><td>—</td><td>—</td><td>—</td><td>600+ events</td></tr>
+      <tr><td>Executive narratives (auto)</td><td>—</td><td>—</td><td>—</td><td>CMO-ready</td></tr>
+      <tr><td>Constraint diagnosis</td><td>—</td><td>—</td><td>—</td><td>Binding bottleneck</td></tr>
+      <tr><td>Setup time</td><td>Hours</td><td>Weeks</td><td>Months</td><td>48 hours</td></tr>
+      <tr><td>Minimum commitment</td><td>Monthly</td><td>Annual</td><td>Annual</td><td>6 months</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+</div>
+
+<!-- ═══ FAQ ═══ -->
+<div class="container" id="faq">
+<section class="faq-section">
+  <div style="text-align:center;margin-bottom:48px;">
+    <h2 class="section-title">Frequently Asked Questions</h2>
+  </div>
+  <div class="faq-grid">
+    <div class="faq-item open">
+      <div class="faq-q">Why a 6-month commitment instead of monthly?</div>
+      <div class="faq-a">Event marketing campaigns run 8–16 weeks. A 6-month engagement covers a full campaign lifecycle — planning, active monitoring, and post-event analysis. Plus, you get 2 months of Lights On coverage free — so you're really getting 8 months of value.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What happens after the 2-month Lights On period?</div>
+      <div class="faq-a">You can renew for your next event cycle, switch to Archive mode ($97/month) to preserve dashboard access and historical data, or export everything and close the account. No lock-in beyond the initial 6-month engagement.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What data sources do you connect to?</div>
+      <div class="faq-a">All plans include connectors for GA4, Google Ads, LinkedIn Ads, Meta Ads, major email platforms, and registration systems. The Command tier adds custom connector setup for non-standard sources, CRM integrations (HubSpot, Salesforce), and enrichment platforms.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How quickly can I get started?</div>
+      <div class="faq-a">Most clients are live within 48 hours. We handle connector setup, benchmark calibration against your event type, and initial dashboard configuration during onboarding. You'll see your first Lens intelligence brief within 24 hours of data flowing.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What makes Lens different from ChatGPT or other AI tools?</div>
+      <div class="faq-a">Lens is purpose-built for event marketing, trained on patterns from 600+ B2B event campaigns. It doesn't just summarise data — it detects performance shifts in real time, diagnoses root causes with evidence, forecasts outcomes with confidence bands, and recommends specific actions with expected impact. Generic AI tools can't do any of that.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Can I upgrade mid-engagement?</div>
+      <div class="faq-a">Yes. You can upgrade from EventPulse + Lens to Command at any time. You'll pay the prorated difference for the remainder of your engagement.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I need technical expertise to use EventPulse?</div>
+      <div class="faq-a">No. EventPulse is designed for marketing leads and event managers, not data engineers. The Copilot lets you ask questions in plain English. Executive Narratives are auto-generated in CMO-friendly language. If you can read a report, you can use EventPulse.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">What's the benchmark database based on?</div>
+      <div class="faq-a">Our benchmark intelligence comes from 600+ B2B event campaigns spanning trade shows, conferences, exhibitions, and summits. Every metric — CPA, conversion rate, funnel velocity, creative fatigue — is contextualised against events of similar type, size, and vertical.</div>
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- ═══ FINAL CTA ═══ -->
+<div class="container">
+<section class="final-cta">
+  <h2>Stop guessing.<br><span class="highlight">Start knowing.</span></h2>
+  <p>Book a 15-minute walkthrough. We'll show you exactly where your funnel leaks and what EventPulse would recommend.</p>
+  <div class="cta-buttons">
+    <a href="https://calendar.app.google/z5PXRpTRspdLjUNN8" target="_blank" class="btn-teal">Book a Demo</a>
+    <a href="https://demo.wemarketevents.ai" target="_blank" class="btn-outline">Try EventPulse Free</a>
+  </div>
+</section>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+<div class="container">
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/#platform">Platform</a>
+    <a href="/pricing">Pricing</a>
+    <a href="/#results">Results</a>
+    <a href="https://calendar.app.google/z5PXRpTRspdLjUNN8" target="_blank">Book a Demo</a>
+    <a href="https://www.linkedin.com/in/ericlouw/" target="_blank">LinkedIn</a>
+  </div>
+  <p>EventPulse by <a href="/">WeMarketEvents.ai</a> — AI-powered marketing intelligence for B2B events. &copy; 2026</p>
+</div>
+</footer>
+
+<script>
+// Billing toggle
+const toggle = document.getElementById('billingToggle');
+const labels = document.querySelectorAll('.toggle-label');
+let isAnnual = false;
+
+toggle.addEventListener('click', () => {
+  isAnnual = !isAnnual;
+  toggle.classList.toggle('annual', isAnnual);
+  labels.forEach(l => l.classList.toggle('active'));
+
+  document.querySelectorAll('.price-amount').forEach(el => {
+    const val = isAnnual ? el.dataset.annual : el.dataset.monthly;
+    el.textContent = Number(val).toLocaleString();
+  });
+  document.querySelectorAll('.price-effective span').forEach(el => {
+    el.textContent = isAnnual ? el.dataset.effAnnual + '/mo' : el.dataset.effMonthly + '/mo';
+  });
+  document.querySelectorAll('.price-commitment').forEach(el => {
+    el.textContent = isAnnual ? el.dataset.commitAnnual : el.dataset.commitMonthly;
+  });
+  document.querySelector('.billing-note').innerHTML = isAnnual
+    ? 'Annual commitment with <span class="mono" style="color:var(--teal)">20% savings</span>. Lights On still included.'
+    : 'All plans include 2 months Lights On post-event coverage. <span class="mono" style="color:var(--teal)">Pay 6, get 8.</span>';
+  updateROI();
+});
+
+// FAQ toggles
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    item.classList.toggle('open');
+  });
+});
+
+// ROI Calculator
+const budgetSlider = document.getElementById('budgetSlider');
+const eventsSlider = document.getElementById('eventsSlider');
+const wasteSlider = document.getElementById('wasteSlider');
+
+function updateROI() {
+  const budget = parseInt(budgetSlider.value);
+  const events = parseInt(eventsSlider.value);
+  const waste = parseInt(wasteSlider.value) / 100;
+
+  document.getElementById('budgetVal').textContent = '$' + budget.toLocaleString();
+  document.getElementById('eventsVal').textContent = events;
+  document.getElementById('wasteVal').textContent = (waste * 100) + '%';
+
+  const wastePerCampaign = budget * waste * 0.5;
+  const annualValue = wastePerCampaign * events;
+  const epCost = isAnnual ? 7680 : 4800;
+  const roiX = annualValue / epCost;
+
+  document.getElementById('roiWaste').textContent = '$' + Math.round(wastePerCampaign).toLocaleString();
+  document.getElementById('roiAnnual').textContent = '$' + Math.round(annualValue).toLocaleString();
+  document.getElementById('roiCost').textContent = '$' + epCost.toLocaleString();
+  document.getElementById('roiMultiple').textContent = roiX.toFixed(1) + 'x';
+}
+
+budgetSlider.addEventListener('input', updateROI);
+eventsSlider.addEventListener('input', updateROI);
+wasteSlider.addEventListener('input', updateROI);
+updateROI();
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior:'smooth', block:'start' }); }
+  });
+});
+</script>
+
+</body>
+</html>
